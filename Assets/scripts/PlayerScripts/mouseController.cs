@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+//test comment
+
 public class mouseController : MonoBehaviour
 {
     public float sensitivity = 100f;
