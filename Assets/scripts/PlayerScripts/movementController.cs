@@ -93,6 +93,7 @@ public class movementController : MonoBehaviour
             }
         }
 
+        // Stand function, normally runs if crouch isn't
         void Stand()
         {
             if (!isCrouching) //do nothing if the player is already standing
