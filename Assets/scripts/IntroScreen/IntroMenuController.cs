@@ -3,14 +3,19 @@ using UnityEngine.UIElements;
 
 public class IntroMenuController: MonoBehaviour
 {
-    [SerializeField]
-    public VisualTreeAsset chapterButtonTemplate;
-
+    // References to assets for chapter selection buttons
+    [SerializeField] public VisualTreeAsset chapterButtonTemplate;
     [SerializeField] public Texture2D ch1icon;
     [SerializeField] public Texture2D ch2icon;
     [SerializeField] public Texture2D ch3icon;
     
+    // References to other UI elements
     private VisualElement centredDiv;
+    private Button quitButton;
+    private Button creditsButton;
+    
+    // Reference to credits screen
+    [SerializeField] public PanelRenderer creditsScreenRenderer;
 
     void Awake()
     {
@@ -50,5 +55,17 @@ public class IntroMenuController: MonoBehaviour
                     break;
             }
         }
+        
+        // Set quit action for quit button
+        quitButton = root.Q<Button>("QuitButton");
+        quitButton.clicked += Application.Quit;
+        
+        // Set credits menu action for credits button
+        creditsButton = root.Q<Button>("CreditsButton");
+        creditsButton.clicked += () =>
+        {
+            creditsScreenRenderer.GetComponent<PanelRenderer>().enabled = true;
+            panelRenderer.enabled = false;
+        };
     }
 }

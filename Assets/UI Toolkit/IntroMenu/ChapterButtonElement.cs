@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 public partial class ChapterButtonElement: VisualElement
 {
     // References to ChapterButton elements
-    private int chapter;
     private VisualElement ChapterIcon => this.Q("ChapterIcon");
     private Label ChapterLabel => this.Q<Label>("ChapterLabel");
     public Button ChapterButton => this.Q<Button>("ChapterButton");
@@ -14,7 +13,6 @@ public partial class ChapterButtonElement: VisualElement
     // Sets button properties when instantiated.
     public void Init(Texture2D icon, int chapter)
     {
-        this.chapter = chapter;
         ChapterIcon.style.backgroundImage = icon;
         ChapterLabel.text = "Chapter " + chapter;
         // TODO set behaviour to load correct chapter
