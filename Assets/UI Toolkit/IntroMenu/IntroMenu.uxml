@@ -1,0 +1,13 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="ChapterButton" src="project://database/Assets/ChapterButton.uxml?fileID=9197481963319205126&amp;guid=67cf5f1a09b7b4a92bc805fdc84a814d&amp;type=3#ChapterButton"/>
+    <Style src="project://database/Assets/UI%20Toolkit/IntroMenu/IntroMenu.uss?fileID=7433441132597879392&amp;guid=45d3d4aee5e47441698d484a378d9141&amp;type=3#IntroMenu"/>
+    <ui:VisualElement style="flex-grow: 1; width: 1280px; height: 720px; background-image: url(&quot;project://database/Assets/Textures/UI/placeholder_bkg.png?fileID=2800000&amp;guid=01c3b06bfec174b7bb656aa6eda6c25f&amp;type=3#placeholder_bkg&quot;); align-items: center;">
+        <ui:VisualElement name="CentredDiv" style="flex-grow: 1; align-content: flex-end; width: 100%; justify-content: center; align-items: center; flex-direction: row;">
+            <ui:Instance template="ChapterButton" name="ChapterButton1"/>
+            <ui:Instance template="ChapterButton" name="ChapterButton2" enabled="false"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="BottomDiv" style="flex-grow: 0; flex-direction: row; width: 100%; height: 10%; justify-content: flex-end;">
+            <ui:Button text="Button" name="Quit" style="bottom: 0; right: 0; width: auto; position: relative; height: 80%; background-position-x: left 0; background-position-y: bottom 0; margin-right: 1%;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
