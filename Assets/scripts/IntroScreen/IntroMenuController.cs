@@ -11,7 +11,6 @@ public class IntroMenuController: MonoBehaviour
     [SerializeField] public Texture2D ch3icon;
     
     private VisualElement centredDiv;
-    private int clicked;
 
     void Awake()
     {
@@ -37,25 +36,19 @@ public class IntroMenuController: MonoBehaviour
             var chapterButtonElement = buttonContainer.Q<ChapterButtonElement>();
             // Add it to our centre div
             centredDiv.Add(chapterButtonElement);
-            // Set up button and set callback function on click
-            chapterButtonElement.Init(ch1icon, i);
-            // chapterButtonElement.RegisterCallback<ClickEvent>(LoadChapter);
+            // Set up button
+            switch (i)
+            {
+                case 1:
+                    chapterButtonElement.Init(ch1icon, i);
+                    break;
+                case 2:
+                    chapterButtonElement.Init(ch2icon, i);
+                    break;
+                case 3:
+                    chapterButtonElement.Init(ch3icon, i);
+                    break;
+            }
         }
-        
-        // chapterButton1.RegisterCallback<ClickEvent>(PrintClickMsg);
     }
-
-    private void LoadChapter(ClickEvent e)
-    {
-        // TODO add chapter load function
-    }
-    
-    // TODO remove testing method
-    private void PrintClickMsg(ClickEvent e)
-    {
-        clicked++;
-        Debug.Log("clicked: " + clicked + " times");
-    }
-    
-
 }
