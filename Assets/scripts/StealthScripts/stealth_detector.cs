@@ -6,6 +6,7 @@ public class stealth_detector : MonoBehaviour
 {
     public float detectionRange;
     public float detectionRate;
+    public float crouchMultiplier = 0.5f;
 
     public GameObject player;
 
@@ -27,12 +28,26 @@ public class stealth_detector : MonoBehaviour
             // this script slowly increases the detection level of the player when they are detected by the stealth detector
             if (Vector3.Distance(transform.position, player.transform.position) <= detectionRange)
             {
-                player.GetComponent<movementController>().detectionLevel += 1;
-                Debug.Log("I SEE YOU");
+                if (player.GetComponent<movementController>().crouching)
+                {
+                    player.GetComponent<movementController>().detectionLevel += 1 * crouchMultiplier;
+                }
+                else
+                {
+                    player.GetComponent<movementController>().detectionLevel += 1;
+                }
+                Debug.Log("I SEE YOU" + player.GetComponent<movementController>().detectionLevel);
             } else
             {
-                player.GetComponent<movementController>().detectionLevel -= 1;
-                Debug.Log("i dont see you...");
+                if (player.GetComponent<movementController>().crouching)
+                {
+                    player.GetComponent<movementController>().detectionLevel -= 1 * crouchMultiplier;
+                }
+                else
+                {
+                    player.GetComponent<movementController>().detectionLevel -= 1;
+                }
+                Debug.Log("i dont see you..." + player.GetComponent<movementController>().detectionLevel);
             }
 
             // this is what happens when the player is fully detected by the stealth detector, you can change this to whatever you want
