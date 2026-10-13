@@ -1222,9 +1222,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22769149a01ef7f5ea205a826bb953a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::stealth_detector
-  isDetected: 0
-  detectionRange: 10
-  player: {fileID: 1898212230}
+  detectionRange: 20
+  detectionRate: 0.5
+  crouchMultiplier: 0.5
+  player: {fileID: 1898212227}
 --- !u!65 &1439760839
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1973,6 +1974,11 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 0
+  detectionLevel: 0
+  crouchHeight: 1
+  crouchSpeed: 6
+  crouchTransitionSpeed: 10
+  crouching: 0
 --- !u!1 &1942549052
 GameObject:
   m_ObjectHideFlags: 0
