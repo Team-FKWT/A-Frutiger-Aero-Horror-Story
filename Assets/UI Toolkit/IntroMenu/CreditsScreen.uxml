@@ -9,6 +9,6 @@
             <ui:Label text="Sample Text" name="Role" style="color: rgb(171, 171, 171); width: 20%; font-size: 24px; -unity-text-align: upper-right; padding-right: 8px; -unity-font-style: bold; margin-top: 8px;"/>
             <ui:Label text="John Pork&#10;Steve Jobs" name="Names" style="color: rgb(171, 171, 171); width: 80%; font-size: 24px; padding-left: 8px; -unity-paragraph-spacing: 0; padding-top: 8px;"/>
         </ui:VisualElement>
-        <ui:Button text="&lt; Back" style="border-left-width: 0; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; margin-right: 0; margin-left: 0; margin-bottom: 0; margin-top: 12px; font-size: 24px; padding-top: 4px; padding-bottom: 4px; -unity-text-align: middle-left; bottom: 0;"/>
+        <ui:Button text="&lt; Back" name="BackButton" style="border-left-width: 0; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; margin-right: 0; margin-left: 0; margin-bottom: 0; margin-top: 12px; font-size: 24px; padding-top: 4px; padding-bottom: 4px; -unity-text-align: middle-left; bottom: 0;"/>
     </ui:VisualElement>
 </ui:UXML>
