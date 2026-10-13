@@ -21,6 +21,8 @@ public class movementController : MonoBehaviour
     private Vector3 velocity;
     private bool onGround;
 
+    public int detectionLevel = 0;
+
     void Awake()
     {
         controller = GetComponent<CharacterController>();
