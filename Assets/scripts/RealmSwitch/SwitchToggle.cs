@@ -5,6 +5,7 @@ using UnityEngine;
 /// same rules (switch points, puzzles) are respected. Player world position
 /// and rotation are preserved during the swap so the player does not get
 /// teleported or disabled if the dressings are parent objects.
+
 public class SwitchToggle : MonoBehaviour
 {
     [Tooltip("Root GameObject for the Reality dressing (enable when in Reality)")]

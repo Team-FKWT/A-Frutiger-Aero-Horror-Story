@@ -1,14 +1,17 @@
 using UnityEngine;
 
 /// A marked "out of order" spot where the player may switch realms.
-/// This goes on a GameObject with a trigger collider covering the area.
-/// Make sure player object is tagged "Player"!
-
+/// Put this on a GameObject with a trigger collider covering the area.
+/// The player object must be tagged "Player".
+ 
 [RequireComponent(typeof(Collider))]
 public class SwitchPoint : MonoBehaviour
 {
     [Tooltip("Puzzle that must be solved before this point works. Leave empty for no requirement.")]
     [SerializeField] private string requiredPuzzleId;
+
+    /// The puzzle that must be solved before this point works. Empty means always open.
+    public string RequiredPuzzleId => requiredPuzzleId;
 
     /// True once the puzzle guarding this switch point is solved.
     public bool IsUnlocked =>
