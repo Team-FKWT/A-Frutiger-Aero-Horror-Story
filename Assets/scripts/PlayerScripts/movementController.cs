@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 [RequireComponent(typeof(CharacterController))]
 public class movementController : MonoBehaviour
@@ -23,6 +24,8 @@ public class movementController : MonoBehaviour
     private bool onGround;
 
     public float detectionLevel = 0;
+
+    public bool isDetected = false;
 
     public float crouchHeight = 1f;
     public float crouchSpeed = 6f;
@@ -58,6 +61,8 @@ public class movementController : MonoBehaviour
         }
 
         crouchHeight = Mathf.Clamp(crouchHeight, controller.radius * 2f, standHeight);
+
+        StartCoroutine(ResetDetection());
 
         if (camera == null)
         {
@@ -176,6 +181,23 @@ public class movementController : MonoBehaviour
         if (camera != null)
         {
             camera.transform.localPosition = cameraStandPosition + Vector3.down * drop;
+        }
+    }
+
+    IEnumerator ResetDetection()
+    {
+        while (true)
+        {
+            if (!isDetected)
+            {
+                detectionLevel -= 2;
+                detectionLevel = Mathf.Clamp(detectionLevel, 0, 100);
+            }
+            else
+            {
+                isDetected = false;
+            }
+            yield return new WaitForSeconds(0.5f);
         }
     }
 }
