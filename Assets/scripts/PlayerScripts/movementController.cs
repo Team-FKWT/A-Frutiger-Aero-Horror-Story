@@ -9,10 +9,11 @@ public class movementController : MonoBehaviour
     private CharacterController controller;
 
     public float walkspeed = 15f;
+    public float sprintSpeed = 22f;
     public float speed;
 
-    public float gravity = 9.8f * 2f;
-    public float jumpHeight = 4f;
+    public float gravity = 9.8f * 2f; //gravity in normal world, dream may be floaty ~9
+    public float jumpHeight = 3f;
 
     public Transform groundDetect;
     public float groundDistance = 0.4f;
@@ -85,6 +86,9 @@ public class movementController : MonoBehaviour
 
         Vector2 input = Vector2.zero;
         Keyboard keyboard = Keyboard.current;
+
+        bool wantsSprint = false;
+        
         if (keyboard != null)
         {
             // Ternary operators cut down on overhead.
@@ -96,10 +100,12 @@ public class movementController : MonoBehaviour
             bool wantsCrouch = keyboard.leftCtrlKey.isPressed || keyboard.cKey.isPressed;
             crouching = wantsCrouch || (crouching && !CanStand());
 
+            wantsSprint = keyboard.leftShiftKey.isPressed;
+
             if (keyboard.spaceKey.wasPressedThisFrame && onGround && !crouching)
             {
                 velocity.y = Mathf.Sqrt(Mathf.Max(0f, jumpHeight * 2f * gravity));
-            }
+            }    
         }
 
         UpdateCrouchHeight();
@@ -107,7 +113,21 @@ public class movementController : MonoBehaviour
         input = Vector2.ClampMagnitude(input, 1f);
         Vector3 move = transform.right * input.x + transform.forward * input.y;
         velocity.y -= gravity * Time.deltaTime;
-        CollisionFlags collisions = controller.Move((move * (crouching ? crouchSpeed : speed) + velocity) * Time.deltaTime);
+        float movementSpeed = speed;
+
+        // Can't sprint while crouched ofc
+            //(though i might add a slide later if u crouch while sprinting -frank)
+        if (crouching)
+        {
+            movementSpeed = crouchSpeed;
+        }
+        else if (wantsSprint && input.sqrMagnitude > 0f)
+        {
+            movementSpeed = sprintSpeed;
+        }
+
+        CollisionFlags collisions =
+            controller.Move((move * movementSpeed + velocity) * Time.deltaTime);
 
         if ((collisions & CollisionFlags.Above) != 0 && velocity.y > 0f)
         {
