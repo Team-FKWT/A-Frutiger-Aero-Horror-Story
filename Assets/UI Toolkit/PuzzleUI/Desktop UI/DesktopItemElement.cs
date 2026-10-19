@@ -9,23 +9,28 @@ public partial class DesktopItemElement: VisualElement
     private Label itemLabel => this.Q<Label>("ItemLabel");
     private Button itemButton => this.Q<Button>("DesktopItem");
     
-    // Window to open when item clicked.
-    private VisualTreeAsset itemWindow;
+    // Contents of windows to open when item clicked.
+    private VisualTreeAsset itemContents;
     
     // Reference to parent tree to add window to.
     private VisualElement desktopContents;
 
-    public void Init(Texture2D icon, string label, VisualTreeAsset window, VisualElement contentArea)
+    public void Init(Texture2D icon, string label, VisualTreeAsset contents, VisualElement contentArea, VisualTreeAsset windowTemplate)
     {
         desktopContents = contentArea;
+        itemContents = contents;
+        // Set visible elements from parameters
         itemIcon.style.backgroundImage = icon;
         itemLabel.text = label;
-        itemWindow = window;
         // When button is clicked, open itemWindow in DesktopContents
         itemButton.clicked += () =>
         {
-            var windowContainer = itemWindow.Instantiate();
-            desktopContents.Add(windowContainer);
+            // Create new DesktopWindowElement
+            var windowContainer = windowTemplate.Instantiate();
+            var desktopWindow = windowContainer.Q<DesktopWindowElement>();
+            contentArea.Add(desktopWindow);
+            // Instantiate window with provided contents
+            desktopWindow.Init(label, contents);
         };
     }
 
