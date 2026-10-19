@@ -274,7 +274,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.05, z: -0.52}
-  m_LocalScale: {x: 0.07, y: 0.1, z: 0.2}
+  m_LocalScale: {x: 0.66, y: 1, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 954226615}
@@ -344,9 +344,9 @@ PanelRenderer:
   m_PanelSettings: {fileID: 11400000, guid: fa61682db893641f7962e4599004c28f, type: 2}
   sourceAsset: {fileID: 9197481963319205126, guid: a9d86f0c0c0ed401e8b6ee69a4a6a965, type: 3}
   m_ParentUI: {fileID: 0}
-  m_WorldSpaceSizeMode: 0
-  m_WorldSpaceWidth: 1920
-  m_WorldSpaceHeight: 1080
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1280
+  m_WorldSpaceHeight: 720
   m_PivotReferenceSize: 0
   m_Pivot: 0
   m_Position: 0
@@ -491,12 +491,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4451e132335da3347b4a457d12ead540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProgressionState
+  currentRealm: 0
   currentSegment: 1
   solvedPuzzles: []
-  currentRealm: 0
   activeSwitchPoint: {fileID: 0}
-  pillsLeft: 0
-  canDream: 0
+  endingStarted: 0
 --- !u!4 &596684583
 Transform:
   m_ObjectHideFlags: 0
@@ -561,6 +560,37 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &645507413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 645507414}
+  m_Layer: 0
+  m_Name: IntroTransitionEndpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &645507414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645507413}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0013878075, y: -0, z: -0, w: 0.9999991}
+  m_LocalPosition: {x: 0, y: 51, z: -23.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -673,7 +703,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.268, y: 50.4, z: -3.991}
-  m_LocalScale: {x: 21, y: 16, z: 5}
+  m_LocalScale: {x: 24, y: 16, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2010772302}
@@ -692,6 +722,7 @@ GameObject:
   - component: {fileID: 1739810796}
   - component: {fileID: 1739810795}
   - component: {fileID: 1739810798}
+  - component: {fileID: 1739810799}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -767,7 +798,7 @@ Transform:
   m_GameObject: {fileID: 1739810794}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0013878075, y: -0, z: -0, w: 0.9999991}
-  m_LocalPosition: {x: 0, y: 51, z: -32.4}
+  m_LocalPosition: {x: 0, y: 66.8, z: -112.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -817,6 +848,20 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1739810799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739810794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f3d3fbfac1a94b42819bc41604e9fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntroScreenCameraAnim
+  tgtPoint: {fileID: 645507413}
+  moveTime: 4
 --- !u!1 &1826891578
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,9 +1011,9 @@ PanelRenderer:
   m_PanelSettings: {fileID: 11400000, guid: fa61682db893641f7962e4599004c28f, type: 2}
   sourceAsset: {fileID: 9197481963319205126, guid: cc7ead9e1eec7410397c0506be74b72a, type: 3}
   m_ParentUI: {fileID: 0}
-  m_WorldSpaceSizeMode: 0
-  m_WorldSpaceWidth: 1920
-  m_WorldSpaceHeight: 1080
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1280
+  m_WorldSpaceHeight: 720
   m_PivotReferenceSize: 0
   m_Pivot: 0
   m_Position: 0
@@ -982,7 +1027,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.05, z: -0.51}
-  m_LocalScale: {x: 0.07, y: 0.1, z: 0.2}
+  m_LocalScale: {x: 0.66, y: 1, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 954226615}
@@ -1008,6 +1053,7 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 645507414}
   - {fileID: 1739810797}
   - {fileID: 48559543}
   - {fileID: 310247762}
