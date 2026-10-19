@@ -21,7 +21,7 @@ public partial class ChapterButtonElement: VisualElement
         ChapterButton.clicked += () =>
         {
             // Check that the specified scene exists
-            if (SceneManager.GetSceneByName(ChapterScene).IsValid())
+            if (Application.CanStreamedLevelBeLoaded(ChapterScene))
                 SceneManager.LoadScene(ChapterScene);
             else
                 Debug.LogError("Chapter " + chapter + " button tried to load invalid scene \"" + ChapterScene + "\"");
