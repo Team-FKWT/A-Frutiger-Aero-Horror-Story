@@ -1,16 +1,9 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="DocumentWindow" src="project://database/Assets/UI%20Toolkit/PuzzleUI/DocumentWindow.uxml?fileID=9197481963319205126&amp;guid=81e710eac64524b6f9973849c104f14f&amp;type=3#DocumentWindow"/>
     <ui:Image name="Background" source="project://database/Assets/Textures/UI/placeholder_bkg.png?fileID=2800000&amp;guid=01c3b06bfec174b7bb656aa6eda6c25f&amp;type=3#placeholder_bkg" style="width: 100%; height: 100%; position: absolute;"/>
     <ui:VisualElement name="DesktopContents" style="flex-grow: 1; position: absolute; top: 0; left: 0; right: auto; bottom: auto; width: 100%; height: 100%;">
-        <ui:VisualElement name="Icons" style="flex-grow: 1; height: 90%; position: absolute; left: 0; top: 0; width: 100%; align-items: flex-start; padding-left: 24px; padding-top: 24px; padding-bottom: 24px; padding-right: 24px;">
-            <ui:Button text="Button" name="DesktopItem" style="background-color: rgba(188, 188, 188, 0); border-top-width: 0; border-left-width: 0; border-bottom-width: 0; border-right-width: 0; padding-bottom: 8px; padding-left: 8px; padding-top: 8px; padding-right: 8px;">
-                <ui:Image name="ItemIcon" style="width: 84px; height: 84px; background-image: url(&quot;project://database/Assets/Textures/UI/placeholder_ch1_icon.png?fileID=2800000&amp;guid=1cb3768a1791945c89e6f0ada4c1cae5&amp;type=3#placeholder_ch1_icon&quot;);"/>
-                <ui:Label text="Item" name="ItemName"/>
-            </ui:Button>
-        </ui:VisualElement>
+        <ui:VisualElement name="Icons" style="flex-grow: 1; height: 90%; position: absolute; left: 0; top: 0; width: 100%; align-items: flex-start; padding-left: 24px; padding-top: 24px; padding-bottom: 24px; padding-right: 24px;"/>
         <ui:VisualElement name="Taskbar" style="flex-grow: 1; background-color: rgb(209, 209, 209); bottom: 0; right: 0; height: 10%; position: absolute; width: 100%;">
             <ui:Button text="Button" name="StartMenu" style="left: 0; bottom: 0; position: absolute; height: 100%; margin-top: 0; margin-left: 0; margin-bottom: 0; margin-right: 0; width: 10%;"/>
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:Instance template="DocumentWindow" name="DocumentWindow" style="height: 100%; width: 100%;"/>
 </ui:UXML>
