@@ -1,0 +1,13 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="DocumentWindow" style="flex-grow: 1; position: absolute; width: 70%; height: 70%; top: 77px; left: 326px; border-top-width: 4px; border-left-width: 4px; border-bottom-width: 4px; border-right-width: 4px; border-left-color: rgb(117, 140, 149); border-top-color: rgb(117, 140, 149); border-bottom-color: rgb(117, 140, 149); border-right-color: rgb(117, 140, 149);">
+        <ui:VisualElement name="WindowBar" style="flex-grow: 0; top: 0; height: 8%; background-color: rgb(75, 137, 212); justify-content: space-between; flex-direction: row;">
+            <ui:Label text="Evil Document" name="WindowTitle" style="left: 0; margin-left: 8px; margin-bottom: 4px; flex-shrink: 1; font-size: 24px; justify-content: center; align-content: center; margin-top: 4px; padding-top: 0; padding-bottom: 0; color: rgb(255, 255, 255); -unity-font-style: bold;"/>
+            <ui:Button text="X" name="CloseButton" style="min-height: auto; min-width: auto; right: 0; flex-shrink: 1; margin-bottom: 2px; margin-left: 2px; margin-right: 2px;"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="WindowContents" style="flex-grow: 1; background-color: rgb(231, 231, 231); align-content: flex-end; align-items: center; justify-content: flex-end; align-self: auto;">
+            <ui:VisualElement name="DocumentView" style="flex-grow: 0; width: 60%; align-content: flex-end; height: 90%; background-color: rgb(255, 255, 255); padding-left: 24px; padding-top: 24px; padding-right: 24px;">
+                <ui:Label text="Pretend there&apos;s some awful secrets in this document.&#10;&#10;The padlock combo is 8888." name="DocumentBodyText" style="font-size: 20px; padding-right: 0; margin-left: 0; padding-left: 0; padding-top: 0; margin-top: 0; margin-bottom: 0; margin-right: 0; white-space: normal;"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
