@@ -1,0 +1,14 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Background" style="flex-grow: 0; width: 1280px; height: 720px; background-color: rgb(0, 0, 0); justify-content: space-between; padding-top: 0; padding-bottom: 0;">
+        <ui:Label text="Credits" style="background-color: rgb(171, 171, 171); height: 36px; -unity-text-align: middle-center; font-size: 24px; margin-bottom: 12px; margin-left: 0; margin-right: 0; margin-top: 0; padding-right: 0; padding-left: 0; top: 0;"/>
+        <ui:VisualElement name="Credit" style="flex-grow: 0; flex-direction: row;">
+            <ui:Label text="Sample Text" name="Role" style="color: rgb(171, 171, 171); width: 20%; font-size: 24px; -unity-text-align: upper-right; padding-right: 8px; -unity-font-style: bold; margin-top: 8px;"/>
+            <ui:Label text="Joe Mama&#10;Your Father&#10;Ya Sister&#10;Yer Brother&#10;" name="Names" style="color: rgb(171, 171, 171); width: 80%; font-size: 24px; padding-left: 8px; -unity-paragraph-spacing: 0; padding-top: 8px;"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="Credit" style="flex-grow: 0; flex-direction: row;">
+            <ui:Label text="Sample Text" name="Role" style="color: rgb(171, 171, 171); width: 20%; font-size: 24px; -unity-text-align: upper-right; padding-right: 8px; -unity-font-style: bold; margin-top: 8px;"/>
+            <ui:Label text="John Pork&#10;Steve Jobs" name="Names" style="color: rgb(171, 171, 171); width: 80%; font-size: 24px; padding-left: 8px; -unity-paragraph-spacing: 0; padding-top: 8px;"/>
+        </ui:VisualElement>
+        <ui:Button text="&lt; Back" name="BackButton" style="border-left-width: 0; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; margin-right: 0; margin-left: 0; margin-bottom: 0; margin-top: 12px; font-size: 24px; padding-top: 4px; padding-bottom: 4px; -unity-text-align: middle-left; bottom: 0;"/>
+    </ui:VisualElement>
+</ui:UXML>

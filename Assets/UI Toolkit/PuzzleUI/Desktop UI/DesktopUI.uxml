@@ -1,0 +1,9 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Image name="Background" source="project://database/Assets/Textures/UI/placeholder_bkg.png?fileID=2800000&amp;guid=01c3b06bfec174b7bb656aa6eda6c25f&amp;type=3#placeholder_bkg" style="width: 100%; height: 100%; position: absolute;"/>
+    <ui:VisualElement name="DesktopContents" style="flex-grow: 1; position: absolute; top: 0; left: 0; right: auto; bottom: auto; width: 100%; height: 100%;">
+        <ui:VisualElement name="Icons" style="flex-grow: 1; height: 90%; position: absolute; left: 0; top: 0; width: 100%; align-items: flex-start; padding-left: 24px; padding-top: 24px; padding-bottom: 24px; padding-right: 24px;"/>
+        <ui:VisualElement name="Taskbar" style="flex-grow: 1; background-color: rgb(209, 209, 209); bottom: 0; right: 0; height: 10%; position: absolute; width: 100%;">
+            <ui:Button text="Button" name="StartMenu" style="left: 0; bottom: 0; position: absolute; height: 100%; margin-top: 0; margin-left: 0; margin-bottom: 0; margin-right: 0; width: 10%;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
