@@ -8,17 +8,23 @@ public partial class ChapterButtonElement: VisualElement
     // References to ChapterButton elements
     private VisualElement ChapterIcon => this.Q("ChapterIcon");
     private Label ChapterLabel => this.Q<Label>("ChapterLabel");
-    public Button ChapterButton => this.Q<Button>("ChapterButton");
+    private Button ChapterButton => this.Q<Button>("ChapterButton");
+    private string ChapterScene;
 
     // Sets button properties when instantiated.
-    public void Init(Texture2D icon, int chapter)
+    public void Init(Texture2D icon, int chapter, string scene)
     {
         ChapterIcon.style.backgroundImage = icon;
         ChapterLabel.text = "Chapter " + chapter;
-        // TODO set behaviour to load correct chapter
+        ChapterScene = scene;
+        // On click, load scene specified in controller script.
         ChapterButton.clicked += () =>
         {
-            SceneManager.LoadScene("SampleScene");
+            // Check that the specified scene exists
+            if (SceneManager.GetSceneByName(ChapterScene).IsValid())
+                SceneManager.LoadScene(ChapterScene);
+            else
+                Debug.LogError("Chapter " + chapter + " button tried to load invalid scene \"" + ChapterScene + "\"");
         };
     }
 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class IntroMenuController: MonoBehaviour
@@ -6,8 +7,11 @@ public class IntroMenuController: MonoBehaviour
     // References to assets for chapter selection buttons
     [SerializeField] public VisualTreeAsset chapterButtonTemplate;
     [SerializeField] public Texture2D ch1icon;
+    [SerializeField] public string ch1Scene;
     [SerializeField] public Texture2D ch2icon;
+    [SerializeField] public string ch2Scene;
     [SerializeField] public Texture2D ch3icon;
+    [SerializeField] public string ch3Scene;
     
     // References to other UI elements
     private VisualElement centredDiv;
@@ -45,13 +49,13 @@ public class IntroMenuController: MonoBehaviour
             switch (i)
             {
                 case 1:
-                    chapterButtonElement.Init(ch1icon, i);
+                    chapterButtonElement.Init(ch1icon, i, ch1Scene);
                     break;
                 case 2:
-                    chapterButtonElement.Init(ch2icon, i);
+                    chapterButtonElement.Init(ch2icon, i, ch2Scene);
                     break;
                 case 3:
-                    chapterButtonElement.Init(ch3icon, i);
+                    chapterButtonElement.Init(ch3icon, i, ch3Scene);
                     break;
             }
         }

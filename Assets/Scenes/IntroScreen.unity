@@ -1046,8 +1046,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IntroMenuController
   chapterButtonTemplate: {fileID: 9197481963319205126, guid: 67cf5f1a09b7b4a92bc805fdc84a814d, type: 3}
   ch1icon: {fileID: 2800000, guid: 1cb3768a1791945c89e6f0ada4c1cae5, type: 3}
+  ch1Scene: 
   ch2icon: {fileID: 2800000, guid: 7b0114ad40a9a4fb9add678d6433e1c4, type: 3}
+  ch2Scene: 
   ch3icon: {fileID: 2800000, guid: adbb73c6206b4426ab021fc6ed25c15f, type: 3}
+  ch3Scene: 
   creditsScreenRenderer: {fileID: 61166056}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
