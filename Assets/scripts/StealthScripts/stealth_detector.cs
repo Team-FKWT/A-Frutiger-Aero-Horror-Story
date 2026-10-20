@@ -62,8 +62,17 @@ public class stealth_detector : MonoBehaviour
         Vector3 direction = target - transform.position;
 
         // triggers are ignored so the camera's view box (and other trigger volumes) don't block the ray
-        if (Physics.Raycast(transform.position, direction.normalized, out RaycastHit hit, direction.magnitude, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
+        RaycastHit[] hits = Physics.RaycastAll(transform.position, direction.normalized, direction.magnitude, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore);
+        System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
+
+        foreach (RaycastHit hit in hits)
         {
+            // skip the detector's own colliders (e.g. the camera lens) so it doesn't block its own view
+            if (hit.transform.IsChildOf(transform))
+            {
+                continue;
+            }
+
             bool hitPlayer = hit.transform == player.transform || hit.transform.IsChildOf(player.transform);
             Debug.DrawLine(transform.position, hit.point, hitPlayer ? Color.red : Color.yellow, detectionRate);
             return hitPlayer;
