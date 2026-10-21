@@ -1,0 +1,4 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" authoring-id="-990035768">
+    <Style src="project://database/Assets/platformingUI/platforming.uss?fileID=7433441132597879392&amp;guid=595831745c13c764e82dee9d62529a96&amp;type=3#platforming"/>
+    <ui:Label name="finish-message" text="Demo Complete!" class="finish-message"/>
+</ui:UXML>

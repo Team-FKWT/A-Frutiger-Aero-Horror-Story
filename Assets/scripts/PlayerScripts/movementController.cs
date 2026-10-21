@@ -16,6 +16,10 @@ public class movementController : MonoBehaviour
     public float gravity = 9.8f * 2f; //gravity in normal world, dream may be floaty ~9
     public float jumpHeight = 3f;
 
+    [Header("Realm Movement")]
+    [SerializeField] private ProgressionState progressionState;
+    private bool doubleJumpUsed;
+
     public Transform groundDetect;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
@@ -39,6 +43,12 @@ public class movementController : MonoBehaviour
     private Vector3 cameraStandPosition;
     private float currentHeight;
     public bool crouching;
+
+    public LayerMask interactableMask;
+    private const float InteractDistance = 5.0f;
+
+    public bool inDream = ProgressionState.Instance != null && ProgressionState.Instance.CurrentRealm == Realm.Dream;
+    //check if in dream or not, changes ur moveset
 
     void Awake()
     {
@@ -84,9 +94,14 @@ public class movementController : MonoBehaviour
                 groundMask, QueryTriggerInteraction.Ignore);
         }
 
-        if (onGround && velocity.y < 0f)
+        if (onGround)
         {
-            velocity.y = -2f;
+            if (velocity.y < 0f)
+            {
+                velocity.y = -2f;
+            }
+
+            doubleJumpUsed = false;
         }
 
         Vector2 input = Vector2.zero;
@@ -96,6 +111,11 @@ public class movementController : MonoBehaviour
         
         if (keyboard != null)
         {
+            // Interact with objects (E)
+            if (keyboard.eKey.wasPressedThisFrame)
+            {
+                CastInteract();
+            }
             // Ternary operators cut down on overhead.
             input.x = (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed ? 1f : 0f)
                 - (keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed ? 1f : 0f);
@@ -107,10 +127,23 @@ public class movementController : MonoBehaviour
 
             wantsSprint = keyboard.leftShiftKey.isPressed;
 
-            if (keyboard.spaceKey.wasPressedThisFrame && onGround && !crouching)
+            if (Keyboard.current.spaceKey.wasPressedThisFrame && !crouching)
             {
-                velocity.y = Mathf.Sqrt(Mathf.Max(0f, jumpHeight * 2f * gravity));
-            }    
+                bool inDream = ProgressionState.Instance != null &&
+                    ProgressionState.Instance.CurrentRealm == Realm.Dream;
+
+                // Normal grounded jump
+                if (onGround)
+                {
+                    velocity.y = Mathf.Sqrt(jumpHeight * 2f * gravity);
+                }
+                // One additional jump while airborne, but only in Dream
+                else if (inDream && !doubleJumpUsed)
+                {
+                    velocity.y = Mathf.Sqrt(jumpHeight * 2f * gravity);
+                    doubleJumpUsed = true;
+                }
+            }
         }
 
         UpdateCrouchHeight();
@@ -198,6 +231,32 @@ public class movementController : MonoBehaviour
                 isDetected = false;
             }
             yield return new WaitForSeconds(0.5f);
+        }
+    }
+    void CastInteract()
+    {
+        if (camera == null)
+            return;
+
+        Ray ray = camera.ViewportPointToRay(
+            new Vector3(0.5f, 0.5f, 0f)
+        );
+
+        RaycastHit hitData;
+
+        if (Physics.Raycast(
+            ray,
+            out hitData,
+            InteractDistance,
+            interactableMask))
+        {
+            Debug.Log("Interacting with: " + hitData.transform.name);
+
+            hitData.transform.SendMessage(
+                "OnInteract",
+                gameObject,
+                SendMessageOptions.DontRequireReceiver
+            );
         }
     }
 }
