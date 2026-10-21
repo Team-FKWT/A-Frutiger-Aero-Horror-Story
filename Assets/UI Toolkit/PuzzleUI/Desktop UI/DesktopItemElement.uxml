@@ -1,0 +1,8 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <DesktopItemElement>
+        <ui:Button text="" name="DesktopItem" style="background-color: rgba(188, 188, 188, 0); border-top-width: 0; border-left-width: 0; border-bottom-width: 0; border-right-width: 0; padding-bottom: 8px; padding-left: 8px; padding-top: 8px; padding-right: 8px; flex-shrink: 1; flex-wrap: nowrap; align-items: center;">
+            <ui:Image name="ItemIcon" style="width: 84px; height: 84px; background-image: url(&quot;project://database/Assets/Textures/UI/placeholder_ch1_icon.png?fileID=2800000&amp;guid=1cb3768a1791945c89e6f0ada4c1cae5&amp;type=3#placeholder_ch1_icon&quot;);"/>
+            <ui:Label text="Item" name="ItemLabel"/>
+        </ui:Button>
+    </DesktopItemElement>
+</ui:UXML>

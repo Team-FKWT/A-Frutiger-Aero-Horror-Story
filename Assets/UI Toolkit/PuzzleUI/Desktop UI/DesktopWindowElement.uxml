@@ -1,0 +1,11 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <DesktopWindowElement>
+        <ui:VisualElement name="DocumentWindow" style="flex-grow: 0; position: relative; width: 1100px; height: 500px; top: 5%; left: 10%; border-top-width: 4px; border-left-width: 4px; border-bottom-width: 4px; border-right-width: 4px; border-left-color: rgb(117, 140, 149); border-top-color: rgb(117, 140, 149); border-bottom-color: rgb(117, 140, 149); border-right-color: rgb(117, 140, 149); bottom: auto; right: auto; align-self: stretch; align-content: center; align-items: center; justify-content: center; flex-shrink: 0;">
+            <ui:VisualElement name="WindowBar" style="flex-grow: 0; top: 0; height: 36px; background-color: rgb(75, 137, 212); justify-content: space-between; flex-direction: row; width: 100%;">
+                <ui:Label text="Title" name="WindowTitle" style="left: 0; margin-left: 8px; margin-bottom: 4px; flex-shrink: 1; font-size: 24px; justify-content: center; align-content: center; margin-top: 4px; padding-top: 0; padding-bottom: 0; color: rgb(255, 255, 255); -unity-font-style: bold;"/>
+                <ui:Button text="X" name="CloseButton" style="min-height: auto; min-width: auto; right: 0; flex-shrink: 1; margin-bottom: 2px; margin-left: 2px; margin-right: 2px;"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="WindowContents" style="flex-grow: 1; background-color: rgb(231, 231, 231); align-content: auto; align-items: auto; justify-content: flex-start; align-self: auto; width: 100%; height: auto; flex-shrink: 0; left: 0; top: 0; right: 0; bottom: 0;"/>
+        </ui:VisualElement>
+    </DesktopWindowElement>
+</ui:UXML>
