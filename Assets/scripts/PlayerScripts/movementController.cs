@@ -43,6 +43,10 @@ public class movementController : MonoBehaviour
     private Vector3 cameraStandPosition;
     private float currentHeight;
     public bool crouching;
+
+    public LayerMask interactableMask;
+    private const float InteractDistance = 5.0f;
+
     public bool inDream = ProgressionState.Instance != null && ProgressionState.Instance.CurrentRealm == Realm.Dream;
     //check if in dream or not, changes ur moveset
 
@@ -107,6 +111,11 @@ public class movementController : MonoBehaviour
         
         if (keyboard != null)
         {
+            // Interact with objects (E)
+            if (keyboard.eKey.wasPressedThisFrame)
+            {
+                CastInteract();
+            }
             // Ternary operators cut down on overhead.
             input.x = (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed ? 1f : 0f)
                 - (keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed ? 1f : 0f);
@@ -222,6 +231,32 @@ public class movementController : MonoBehaviour
                 isDetected = false;
             }
             yield return new WaitForSeconds(0.5f);
+        }
+    }
+    void CastInteract()
+    {
+        if (camera == null)
+            return;
+
+        Ray ray = camera.ViewportPointToRay(
+            new Vector3(0.5f, 0.5f, 0f)
+        );
+
+        RaycastHit hitData;
+
+        if (Physics.Raycast(
+            ray,
+            out hitData,
+            InteractDistance,
+            interactableMask))
+        {
+            Debug.Log("Interacting with: " + hitData.transform.name);
+
+            hitData.transform.SendMessage(
+                "OnInteract",
+                gameObject,
+                SendMessageOptions.DontRequireReceiver
+            );
         }
     }
 }
