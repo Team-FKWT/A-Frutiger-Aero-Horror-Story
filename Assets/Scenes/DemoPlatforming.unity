@@ -1654,8 +1654,9 @@ MonoBehaviour:
   walkspeed: 15
   sprintSpeed: 22
   speed: 0
-  gravity: 19.6
-  jumpHeight: 4
+  gravity: 9.8
+  jumpHeight: 3
+  progressionState: {fileID: 0}
   groundDetect: {fileID: 1764445539}
   groundDistance: 0.4
   groundMask:
@@ -1667,6 +1668,7 @@ MonoBehaviour:
   crouchSpeed: 6
   crouchTransitionSpeed: 10
   crouching: 0
+  inDream: 0
 --- !u!1 &2044926141
 GameObject:
   m_ObjectHideFlags: 0

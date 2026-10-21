@@ -1,0 +1,26 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Background" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.125); -unity-text-align: middle-left; justify-content: center; align-items: center; align-content: center;">
+        <ui:VisualElement name="TopButtons" style="flex-grow: 1; height: 30%; width: 100%;"/>
+        <ui:VisualElement name="LockArea" style="flex-grow: 1; height: 40%; flex-direction: row; align-items: center; width: 100%; justify-content: center;">
+            <ui:Image name="LockBody" style="flex-direction: row; background-color: rgb(203, 157, 31); width: 30%; height: 100%; background-position-y: top 0; background-size: 100% 100%; -unity-background-scale-mode: stretch-to-fill; background-position-x: left 0; justify-content: space-around; align-self: auto; align-items: center;">
+                <ui:VisualElement style="flex-grow: 1; height: 100%; justify-content: center; align-items: center;">
+                    <ui:Button text="" name="Dial1Up" style="background-image: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=1169890249420208065&amp;guid=575612f6434ba4b71b1eb0528f6a9b63&amp;type=3#arrow-up&quot;); background-color: rgba(188, 188, 188, 0); border-left-width: 0; border-top-width: 0; border-bottom-width: 0; border-right-width: 0; width: 60%; background-size: 60% 100%;"/>
+                    <ui:Label text="1" name="Dial1" style="width: 60%; height: 30%; -unity-text-align: middle-center; font-size: 48px;"/>
+                    <ui:Button text="" name="Dial1Down" style="background-image: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=4154780841294389669&amp;guid=575612f6434ba4b71b1eb0528f6a9b63&amp;type=3#arrow-down&quot;); background-color: rgba(188, 188, 188, 0); border-left-width: 0; border-top-width: 0; border-bottom-width: 0; border-right-width: 0; width: 60%; background-size: 60% 100%;"/>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; height: 100%; align-items: center; align-self: auto; justify-content: center;">
+                    <ui:Button text="" name="Dial2Up" style="background-image: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=1169890249420208065&amp;guid=575612f6434ba4b71b1eb0528f6a9b63&amp;type=3#arrow-up&quot;); background-color: rgba(188, 188, 188, 0); border-left-width: 0; border-top-width: 0; border-bottom-width: 0; border-right-width: 0; width: 60%; background-size: 60% 100%;"/>
+                    <ui:Label text="1" name="Dial2" style="width: 60%; height: 30%; -unity-text-align: middle-center; font-size: 48px;"/>
+                    <ui:Button text="" name="Dial2Down" style="background-image: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=4154780841294389669&amp;guid=575612f6434ba4b71b1eb0528f6a9b63&amp;type=3#arrow-down&quot;); background-color: rgba(188, 188, 188, 0); border-left-width: 0; border-top-width: 0; border-bottom-width: 0; border-right-width: 0; width: 60%; background-size: 60% 100%;"/>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; height: 100%; align-self: auto; align-content: auto; align-items: center; justify-content: center;">
+                    <ui:Button text="" name="Dial3Up" style="background-image: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=1169890249420208065&amp;guid=575612f6434ba4b71b1eb0528f6a9b63&amp;type=3#arrow-up&quot;); background-color: rgba(188, 188, 188, 0); border-left-width: 0; border-top-width: 0; border-bottom-width: 0; border-right-width: 0; width: 60%; background-size: 60% 100%;"/>
+                    <ui:Label text="1" name="Dial3" style="width: 60%; height: 30%; -unity-text-align: middle-center; font-size: 48px;"/>
+                    <ui:Button text="" name="Dial3Down" style="background-image: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=4154780841294389669&amp;guid=575612f6434ba4b71b1eb0528f6a9b63&amp;type=3#arrow-down&quot;); background-color: rgba(188, 188, 188, 0); border-left-width: 0; border-top-width: 0; border-bottom-width: 0; border-right-width: 0; width: 60%; background-size: 60% 100%;"/>
+                </ui:VisualElement>
+            </ui:Image>
+            <ui:Button text="" name="LockShackle" style="border-top-width: 0; border-bottom-width: 0; border-left-width: 0; border-right-width: 0; margin-left: 0; margin-top: 0; margin-bottom: 0; margin-right: 0; height: 60%; width: 15%;"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="BottomButtons" style="flex-grow: 1; height: 30%; width: 100%;"/>
+    </ui:VisualElement>
+</ui:UXML>
