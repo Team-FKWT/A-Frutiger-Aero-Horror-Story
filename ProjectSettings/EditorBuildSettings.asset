@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PuzzleUITest.unity
     guid: 1927711a89adc4824bf9aa3fa70baa2b
+  - enabled: 1
+    path: Assets/Scenes/RealmSwitchTest.unity
+    guid: eebf08d15f222cf4b957f443b8a3e134
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
