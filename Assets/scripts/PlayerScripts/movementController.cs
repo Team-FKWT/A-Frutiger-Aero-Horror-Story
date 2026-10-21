@@ -39,6 +39,9 @@ public class movementController : MonoBehaviour
     private Vector3 cameraStandPosition;
     private float currentHeight;
     public bool crouching;
+    
+    public LayerMask interactableMask;
+    private const float InteractDistance = 5.0f;
 
     void Awake()
     {
@@ -72,6 +75,11 @@ public class movementController : MonoBehaviour
         {
             cameraStandPosition = camera.transform.localPosition;
         }
+        
+        // Register callback for Interact (E) pressed
+        // var interactAction = InputSystem.actions.FindAction("Interact");
+        // interactAction.performed += CastInteract;
+        // interactAction.Enable();
     }
 
     void Update()
@@ -96,6 +104,12 @@ public class movementController : MonoBehaviour
         
         if (keyboard != null)
         {
+            // Interact with objects (E)
+            if (keyboard.eKey.isPressed)
+            {
+                // Try interacting with object in front
+                CastInteract();
+            }
             // Ternary operators cut down on overhead.
             input.x = (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed ? 1f : 0f)
                 - (keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed ? 1f : 0f);
@@ -112,7 +126,7 @@ public class movementController : MonoBehaviour
                 velocity.y = Mathf.Sqrt(Mathf.Max(0f, jumpHeight * 2f * gravity));
             }    
         }
-
+        
         UpdateCrouchHeight();
 
         input = Vector2.ClampMagnitude(input, 1f);
@@ -198,6 +212,19 @@ public class movementController : MonoBehaviour
                 isDetected = false;
             }
             yield return new WaitForSeconds(0.5f);
+        }
+    }
+    
+    // Cast ray at interactable objects.
+    void CastInteract()
+    {
+        Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        // Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hitData;
+        if (Physics.Raycast(ray, out hitData, InteractDistance, interactableMask))
+        {
+            hitData.transform.parent.SendMessage("OnInteract", gameObject);
+            // hitData. gameObject.SendMessage("OnInteract", gameObject);
         }
     }
 }
