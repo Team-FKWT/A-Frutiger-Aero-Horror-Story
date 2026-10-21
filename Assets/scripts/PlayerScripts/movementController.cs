@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(CharacterController))]
 public class movementController : MonoBehaviour
@@ -42,6 +43,8 @@ public class movementController : MonoBehaviour
     
     public LayerMask interactableMask;
     private const float InteractDistance = 5.0f;
+    
+    public PanelRenderer pausePanel;
 
     void Awake()
     {
@@ -104,6 +107,12 @@ public class movementController : MonoBehaviour
             {
                 // Try interacting with object in front
                 CastInteract();
+            }
+            // Pause game (Esc)
+            // TODO update global isPaused variable (where to put it?)
+            if (keyboard.escapeKey.wasPressedThisFrame)
+            {
+                pausePanel.enabled = true;
             }
             // Ternary operators cut down on overhead.
             input.x = (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed ? 1f : 0f)
