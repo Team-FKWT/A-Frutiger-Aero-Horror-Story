@@ -20,6 +20,8 @@ public class IntroMenuController: MonoBehaviour
     
     // Reference to credits screen
     [SerializeField] public PanelRenderer creditsScreenRenderer;
+    // Reference to loading screen
+    [SerializeField] public GameObject loadingScreenPanel;
 
     void Awake()
     {
@@ -49,13 +51,13 @@ public class IntroMenuController: MonoBehaviour
             switch (i)
             {
                 case 1:
-                    chapterButtonElement.Init(ch1icon, i, ch1Scene);
+                    chapterButtonElement.Init(ch1icon, i, ch1Scene, loadingScreenPanel);
                     break;
                 case 2:
-                    chapterButtonElement.Init(ch2icon, i, ch2Scene);
+                    chapterButtonElement.Init(ch2icon, i, ch2Scene, loadingScreenPanel);
                     break;
                 case 3:
-                    chapterButtonElement.Init(ch3icon, i, ch3Scene);
+                    chapterButtonElement.Init(ch3icon, i, ch3Scene, loadingScreenPanel);
                     break;
             }
         }
