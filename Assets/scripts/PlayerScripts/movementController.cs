@@ -105,7 +105,7 @@ public class movementController : MonoBehaviour
         if (keyboard != null)
         {
             // Interact with objects (E)
-            if (keyboard.eKey.isPressed)
+            if (keyboard.eKey.wasPressedThisFrame)
             {
                 // Try interacting with object in front
                 CastInteract();

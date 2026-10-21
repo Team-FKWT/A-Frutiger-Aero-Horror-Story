@@ -11,7 +11,9 @@ public class ComputerController : MonoBehaviour
     private movementController playerMovementController;
     private mouseController playerMouseController;
     private GameObject player;
-    private InputAction interactEvent;
+    
+    // Whether or not computer is engaged
+    private bool isActive = false;
     
     // All Interactable-layer objects should implement OnInteract() to handle user interaction.
     public void OnInteract(object playerReference)
@@ -22,10 +24,8 @@ public class ComputerController : MonoBehaviour
             Debug.LogError("playerReference is not a GameObject! (received " +  playerReference.GetType().Name + ")");
             return;
         }
+        isActive = true;
         player = (GameObject) playerReference;
-        // Add listener for Interact (E) so player can back away from computer
-        interactEvent = InputSystem.actions.FindAction("Interact");
-        interactEvent.performed += DisengagePlayer;
         // Get reference to camera of player object
         playerCamera = player.GetComponentInChildren<Camera>();
         playerMovementController = player.GetComponent<movementController>();
@@ -42,18 +42,29 @@ public class ComputerController : MonoBehaviour
         
     }
 
+    public void Update()
+    {
+        // If active, check for interact key to disengage
+        if (isActive)
+        {
+            if (Keyboard.current.eKey.wasPressedThisFrame)
+            {
+                isActive = false;
+                // Lock cursor again
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                // Switch camera back
+                closeupCamera.enabled = false;
+                playerCamera.enabled = true;
+                // Reenable controllers
+                playerMovementController.enabled = true;
+                playerMouseController.enabled = true;
+            }
+        }
+    }
+
     public void DisengagePlayer(InputAction.CallbackContext context)
     {
-        // Lock cursor again
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        // Switch camera back
-        playerCamera.enabled = true;
-        closeupCamera.enabled = false;
-        // Reenable controllers
-        playerMovementController.enabled = true;
-        playerMouseController.enabled = true;
         // Remove interact event handler
-        interactEvent.performed -= DisengagePlayer;
     }
 }
