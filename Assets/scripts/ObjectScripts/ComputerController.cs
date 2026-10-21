@@ -62,9 +62,4 @@ public class ComputerController : MonoBehaviour
             }
         }
     }
-
-    public void DisengagePlayer(InputAction.CallbackContext context)
-    {
-        // Remove interact event handler
-    }
 }

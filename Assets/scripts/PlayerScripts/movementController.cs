@@ -75,11 +75,6 @@ public class movementController : MonoBehaviour
         {
             cameraStandPosition = camera.transform.localPosition;
         }
-        
-        // Register callback for Interact (E) pressed
-        // var interactAction = InputSystem.actions.FindAction("Interact");
-        // interactAction.performed += CastInteract;
-        // interactAction.Enable();
     }
 
     void Update()
@@ -223,8 +218,7 @@ public class movementController : MonoBehaviour
         RaycastHit hitData;
         if (Physics.Raycast(ray, out hitData, InteractDistance, interactableMask))
         {
-            hitData.transform.parent.SendMessage("OnInteract", gameObject);
-            // hitData. gameObject.SendMessage("OnInteract", gameObject);
+            hitData.transform.SendMessage("OnInteract", gameObject);
         }
     }
 }
