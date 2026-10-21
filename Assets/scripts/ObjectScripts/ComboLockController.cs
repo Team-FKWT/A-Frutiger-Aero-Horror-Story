@@ -44,20 +44,21 @@ public class ComboLockController : MonoBehaviour
     public void Update()
     {
         // If active, check for interact key to disengage
-        if (isActive)
-        {
-            if (Keyboard.current.eKey.wasPressedThisFrame)
-            {
-                isActive = false;
-                // Disable panel renderer
-                panelRenderer.enabled = false;
-                // Lock cursor again
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-                // Reenable controllers
-                playerMovementController.enabled = true;
-                playerMouseController.enabled = true;
-            }
-        }
+        if (!isActive) return;
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+            DisengageInteract();
+    }
+
+    public void DisengageInteract()
+    {
+        isActive = false;
+        // Disable panel renderer
+        panelRenderer.enabled = false;
+        // Lock cursor again
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        // Reenable controllers
+        playerMovementController.enabled = true;
+        playerMouseController.enabled = true;
     }
 }
