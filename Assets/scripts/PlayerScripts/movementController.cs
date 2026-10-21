@@ -44,7 +44,7 @@ public class movementController : MonoBehaviour
     public LayerMask interactableMask;
     private const float InteractDistance = 5.0f;
     
-    public PanelRenderer pausePanel;
+    public GameObject pausePanel;
 
     void Awake()
     {
@@ -112,7 +112,7 @@ public class movementController : MonoBehaviour
             // TODO update global isPaused variable (where to put it?)
             if (keyboard.escapeKey.wasPressedThisFrame)
             {
-                pausePanel.enabled = true;
+                pausePanel.SetActive(true);
             }
             // Ternary operators cut down on overhead.
             input.x = (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed ? 1f : 0f)
