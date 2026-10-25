@@ -38,7 +38,8 @@ public class stealth_detector : MonoBehaviour
                 }
                 playerController.detectionLevel = Mathf.Clamp(playerController.detectionLevel, 0, 100);
                 Debug.Log("I SEE YOU" + playerController.detectionLevel);
-            } 
+                OnPlayerSeen();
+            }
 
             // this is what happens when the player is fully detected by the stealth detector, you can change this to whatever you want
             if (playerController.detectionLevel >= 100)
@@ -48,6 +49,9 @@ public class stealth_detector : MonoBehaviour
             yield return new WaitForSeconds(detectionRate);
         }
     }
+
+    // called every detection tick the player is seen, subclasses can override this to react (e.g. a guard going on alert)
+    protected virtual void OnPlayerSeen() { }
 
     // proximity detectors use a simple radius, cameras override this with their view box
     protected virtual bool PlayerInRange()
