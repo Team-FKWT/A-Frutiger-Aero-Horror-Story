@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DoorController : MonoBehaviour
+public class DoorController : PuzzleActor
 {
     // Instance field to track door state
     [SerializeField] public bool isLocked = false;
@@ -49,5 +49,11 @@ public class DoorController : MonoBehaviour
     public void LockDoor()
     {
         isLocked = true;
+    }
+    
+    // Implement OnSolve() so doors can be unlocked by puzzles
+    public override void OnSolve()
+    {
+        isLocked = false;
     }
 }
