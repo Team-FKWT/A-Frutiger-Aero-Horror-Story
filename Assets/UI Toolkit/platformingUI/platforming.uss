@@ -1,0 +1,9 @@
+.finish-message {
+    position: absolute;
+    top: 40%;
+    left: 55%;
+    font-size: 50px;
+    color: #FFFF00;
+    display: none;
+    -unity-font-style: bold-and-italic;
+}
