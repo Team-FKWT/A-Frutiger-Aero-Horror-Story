@@ -1,0 +1,113 @@
+.background {
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.terminal {
+    width: 500px;
+    height: 400px;
+
+    padding: 30px;
+
+    background-color: rgb(25, 30, 32);
+
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+
+    border-top-color: rgb(90, 110, 110);
+    border-bottom-color: rgb(90, 110, 110);
+    border-left-color: rgb(90, 110, 110);
+    border-right-color: rgb(90, 110, 110);
+
+    align-items: center;
+}
+
+.title {
+    font-size: 24px;
+    -unity-font-style: bold;
+    color: white;
+
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: rgb(170, 190, 190);
+    margin-bottom: 25px;
+}
+
+.cards {
+    flex-direction: row;
+    justify-content: center;
+
+    margin-bottom: 30px;
+}
+
+.keycard {
+    width: 65px;
+    height: 25px;
+
+    margin-left: 10px;
+    margin-right: 10px;
+
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+}
+
+.red-card {
+    background-color: rgb(200, 45, 45);
+}
+
+.green-card {
+    background-color: rgb(45, 190, 70);
+}
+
+.blue-card {
+    background-color: rgb(45, 90, 210);
+}
+
+.slots {
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.slot {
+    width: 70px;
+    height: 30px;
+
+    margin-left: 5px;
+    margin-right: 5px;
+
+    background-color: rgb(10, 10, 10);
+
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-right-width: 2px;
+
+    border-top-color: rgb(80, 80, 80);
+    border-bottom-color: rgb(80, 80, 80);
+    border-left-color: rgb(80, 80, 80);
+    border-right-color: rgb(80, 80, 80);
+}
+
+.authorize {
+    width: 180px;
+    height: 40px;
+
+    margin-top: 10px;
+}
+
+.status {
+    margin-top: 20px;
+
+    font-size: 18px;
+    -unity-font-style: bold;
+
+    color: white;
+}

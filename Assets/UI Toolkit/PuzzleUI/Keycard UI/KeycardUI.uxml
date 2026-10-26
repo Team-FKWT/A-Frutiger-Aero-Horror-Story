@@ -1,0 +1,63 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:ui="UnityEngine.UIElements"
+         xmlns:uie="UnityEditor.UIElements"
+         noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd"
+         editor-extension-mode="False">
+
+    <ui:VisualElement name="Background"
+                      style="flex-grow: 1; justify-content: center; align-items: center; background-color: rgba(0, 0, 0, 0.6);">
+
+        <ui:VisualElement name="Terminal"
+                          style="width: 500px; height: 400px; padding: 30px; background-color: rgb(25, 30, 32); align-items: center;">
+
+            <ui:Label text="SECURITY ACCESS TERMINAL"
+                      style="font-size: 24px; -unity-font-style: bold; color: white; margin-bottom: 10px;" />
+
+            <ui:Label text="INSERT AUTHORIZATION CARDS"
+                      style="color: rgb(170, 190, 190); margin-bottom: 25px;" />
+
+            <ui:VisualElement style="flex-direction: row; justify-content: center; margin-bottom: 30px;">
+
+                <ui:Button name="RedCard"
+                           text=""
+                           style="width: 65px; height: 25px; margin-left: 10px; margin-right: 10px; background-color: rgb(200, 45, 45);" />
+
+                <ui:Button name="GreenCard"
+                           text=""
+                           style="width: 65px; height: 25px; margin-left: 10px; margin-right: 10px; background-color: rgb(45, 190, 70);" />
+
+                <ui:Button name="BlueCard"
+                           text=""
+                           style="width: 65px; height: 25px; margin-left: 10px; margin-right: 10px; background-color: rgb(45, 90, 210);" />
+
+            </ui:VisualElement>
+
+            <ui:Label text="INSERTED:"
+                      style="color: white;" />
+
+            <ui:VisualElement style="flex-direction: row; margin-bottom: 20px;">
+
+                <ui:VisualElement name="Slot1"
+                                  style="width: 70px; height: 30px; margin: 5px; background-color: rgb(10, 10, 10);" />
+
+                <ui:VisualElement name="Slot2"
+                                  style="width: 70px; height: 30px; margin: 5px; background-color: rgb(10, 10, 10);" />
+
+                <ui:VisualElement name="Slot3"
+                                  style="width: 70px; height: 30px; margin: 5px; background-color: rgb(10, 10, 10);" />
+
+            </ui:VisualElement>
+
+            <ui:Button name="AuthorizeButton"
+                       text="AUTHORIZE"
+                       style="width: 180px; height: 40px; margin-top: 10px;" />
+
+            <ui:Label name="StatusText"
+                      text="AWAITING CREDENTIALS"
+                      style="margin-top: 20px; font-size: 18px; -unity-font-style: bold; color: white;" />
+
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+
+</ui:UXML>
