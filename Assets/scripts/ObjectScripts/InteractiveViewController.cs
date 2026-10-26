@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using Cursor = UnityEngine.Cursor;
 
-public class ComboLockController : MonoBehaviour
+public class InteractiveViewController : MonoBehaviour
 {
     // Reference to UI Panel Renderer
     [SerializeField] public PanelRenderer panelRenderer;
