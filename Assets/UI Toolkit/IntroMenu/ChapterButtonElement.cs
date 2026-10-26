@@ -12,7 +12,7 @@ public partial class ChapterButtonElement: VisualElement
     private string ChapterScene;
 
     // Sets button properties when instantiated.
-    public void Init(Texture2D icon, int chapter, string scene)
+    public void Init(Texture2D icon, int chapter, string scene, GameObject loadingScreenPanel)
     {
         ChapterIcon.style.backgroundImage = icon;
         ChapterLabel.text = "Chapter " + chapter;
@@ -20,11 +20,9 @@ public partial class ChapterButtonElement: VisualElement
         // On click, load scene specified in controller script.
         ChapterButton.clicked += () =>
         {
-            // Check that the specified scene exists
-            if (Application.CanStreamedLevelBeLoaded(ChapterScene))
-                SceneManager.LoadScene(ChapterScene);
-            else
-                Debug.LogError("Chapter " + chapter + " button tried to load invalid scene \"" + ChapterScene + "\"");
+            // Tell controller to load the scene
+            loadingScreenPanel.GetComponent<LoadingScreenController>().sceneName = scene;
+            loadingScreenPanel.SetActive(true);
         };
     }
 

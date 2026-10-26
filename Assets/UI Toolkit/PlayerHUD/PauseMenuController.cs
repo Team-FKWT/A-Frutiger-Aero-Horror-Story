@@ -12,6 +12,7 @@ public class PauseMenuController : MonoBehaviour
     private movementController movementController;
     private mouseController mouseController;
 
+    [SerializeField] public GameObject loadingScreenPanel;
     [SerializeField] public string introScene;
     
     void Awake()
@@ -43,11 +44,14 @@ public class PauseMenuController : MonoBehaviour
         // When exit is clicked, load IntroMenu scene
         exitButton.clicked += () =>
         {
+            // Tell controller to load the scene
+            loadingScreenPanel.GetComponent<LoadingScreenController>().sceneName = introScene;
+            loadingScreenPanel.SetActive(true);
             // Check that the specified scene exists
-            if (Application.CanStreamedLevelBeLoaded(introScene))
-                SceneManager.LoadScene(introScene);
-            else
-                Debug.Log("Couldn't load intro menu scene (" + introScene + ")");
+            // if (Application.CanStreamedLevelBeLoaded(introScene))
+            //     SceneManager.LoadScene(introScene);
+            // else
+            //     Debug.Log("Couldn't load intro menu scene (" + introScene + ")");
         };
         // When resume button is clicked, dismiss pause menu
         resumeButton.clicked += () =>
