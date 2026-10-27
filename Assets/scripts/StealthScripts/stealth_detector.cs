@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 
 public class stealth_detector : MonoBehaviour
@@ -44,7 +45,8 @@ public class stealth_detector : MonoBehaviour
             // this is what happens when the player is fully detected by the stealth detector, you can change this to whatever you want
             if (playerController.detectionLevel >= 100)
             {
-                Debug.Log("ALERT!!");
+                playerController.detectionLevel = 0;
+                SceneManager.LoadScene("StealthScene");
             }
             yield return new WaitForSeconds(detectionRate);
         }
