@@ -6,7 +6,7 @@ using UnityEngine;
 public enum Realm { Reality, Dream }
 
 /// Why a switch attempt was refused. None means switching is allowed.
-public enum SwitchBlockReason { None, NotAtSwitchPoint, PuzzleUnsolved }
+public enum SwitchBlockReason { None, NotAtSwitchPoint, PuzzleUnsolved, NoPillsLeft}
 
 /// The two choices the player can make at the final exit.
 public enum EndingChoice { ExposeTheTruth, RemainIgnorant }
@@ -29,6 +29,7 @@ public class ProgressionState : MonoBehaviour
     [SerializeField] private List<string> solvedPuzzles = new List<string>();
     [SerializeField] private SwitchPoint activeSwitchPoint;
     [SerializeField] private bool endingStarted;
+    [SerializeField] private int pillsLeft = 0;
 
     /// Fired after the realm changes. Argument is the new realm.
     public event Action<Realm> RealmChanged;
@@ -120,6 +121,7 @@ public class ProgressionState : MonoBehaviour
     public SwitchBlockReason GetSwitchBlockReason()
     {
         if (activeSwitchPoint == null) return SwitchBlockReason.NotAtSwitchPoint;
+        if (pillsLeft <= 0) return SwitchBlockReason.NoPillsLeft;
         if (!activeSwitchPoint.IsUnlocked) return SwitchBlockReason.PuzzleUnsolved;
         return SwitchBlockReason.None;
     }
@@ -151,5 +153,11 @@ public class ProgressionState : MonoBehaviour
     public void ExitSwitchPoint(SwitchPoint point)
     {
         if (activeSwitchPoint == point) activeSwitchPoint = null;
+    }
+    
+    //// Called when interacting with pill bottles.
+    public void GetPills(int count)
+    {
+        pillsLeft += count;
     }
 }
