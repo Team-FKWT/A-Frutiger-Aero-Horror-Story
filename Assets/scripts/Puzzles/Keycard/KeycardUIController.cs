@@ -9,6 +9,9 @@ public class KeycardUIController : MonoBehaviour
     [Header("Progression")]
     [SerializeField] private string puzzleId = "S1_Keycards";
 
+    [SerializeField] public PuzzleActor puzzleActor;
+    [SerializeField] public int cardsRequired = 3;
+
     private Button redCard;
     private Button greenCard;
     private Button blueCard;
@@ -184,11 +187,13 @@ public class KeycardUIController : MonoBehaviour
 
     private void CheckAccess()
     {
-        bool correct =
-            insertedCards.Count == 3 &&
-            insertedCards[0] == KeycardColor.Red &&
-            insertedCards[1] == KeycardColor.Green &&
-            insertedCards[2] == KeycardColor.Blue;
+        bool correct = (insertedCards.Count == cardsRequired);
+        if (cardsRequired >= 1)
+            correct = correct && insertedCards[0] == KeycardColor.Red;
+        if (cardsRequired >= 2)
+            correct = correct && insertedCards[1] == KeycardColor.Green;
+        if (cardsRequired >= 3)
+            correct = correct && insertedCards[2] == KeycardColor.Blue;
 
         if (correct)
         {
@@ -197,6 +202,12 @@ public class KeycardUIController : MonoBehaviour
             if (ProgressionState.Instance != null)
             {
                 ProgressionState.Instance.MarkPuzzleSolved(puzzleId);
+            }
+            
+            // If PuzzleActor attached, call OnSolve
+            if (puzzleActor != null)
+            {
+                puzzleActor.OnSolve();
             }
 
             authorizeButton.SetEnabled(false);

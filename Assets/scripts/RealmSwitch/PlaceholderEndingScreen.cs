@@ -86,7 +86,7 @@ public class PlaceholderEndingScreen : MonoBehaviour
             bool expose = chosen == EndingChoice.ExposeTheTruth;
             GUI.Label(new Rect(x, y, w, 50f), expose ? "Expose the Truth" : "Remain Ignorant", titleStyle);
             GUI.Label(new Rect(x, y + 70f, w, 160f), expose ? exposeTheTruthText : remainIgnorantText, bodyStyle);
-            GUI.Label(new Rect(x, y + 240f, w, 30f), "THE END  (stop Play mode to reset)", bodyStyle);
+            GUI.Label(new Rect(x, y + 240f, w, 30f), "THE END  (press M to return to the menu)", bodyStyle);
         }
     }
 

@@ -1977,6 +1977,7 @@ GameObject:
   - component: {fileID: 1898212228}
   - component: {fileID: 1898212232}
   - component: {fileID: 1898212231}
+  - component: {fileID: 1898212233}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -2082,6 +2083,7 @@ MonoBehaviour:
   speed: 0
   gravity: 19.6
   jumpHeight: 4
+  progressionState: {fileID: 0}
   groundDetect: {fileID: 1764445539}
   groundDistance: 0.4
   groundMask:
@@ -2093,6 +2095,25 @@ MonoBehaviour:
   crouchSpeed: 6
   crouchTransitionSpeed: 10
   crouching: 0
+  interactableMask:
+    serializedVersion: 2
+    m_Bits: 0
+  inDream: 0
+--- !u!114 &1898212233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898212227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e18688182480246b78b11990c235e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReturnToIntro
+  introScene: IntroScreen
+  listenForKey: 1
+  menuKey: 27
 --- !u!1 &2144176719
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,30 +1,42 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using Cursor = UnityEngine.Cursor;
 
-public class IntroMenuController: MonoBehaviour
+public class IntroMenuController : MonoBehaviour
 {
+    // One button on the menu: which scene it loads, what it says, and its icon
+    [Serializable]
+    public class MenuScene
+    {
+        public string label = "Chapter";
+        public string sceneName;
+        public Texture2D icon;
+    }
+
     // References to assets for chapter selection buttons
     [SerializeField] public VisualTreeAsset chapterButtonTemplate;
-    [SerializeField] public Texture2D ch1icon;
-    [SerializeField] public string ch1Scene;
-    [SerializeField] public Texture2D ch2icon;
-    [SerializeField] public string ch2Scene;
-    [SerializeField] public Texture2D ch3icon;
-    [SerializeField] public string ch3Scene;
-    
+    // Every scene shown on the menu, in order (add more in the Inspector)
+    [SerializeField] public MenuScene[] scenes;
+
     // References to other UI elements
     private VisualElement centredDiv;
     private Button quitButton;
     private Button creditsButton;
-    
+
     // Reference to credits screen
     [SerializeField] public PanelRenderer creditsScreenRenderer;
     // Reference to loading screen
     [SerializeField] public GameObject loadingScreenPanel;
+    // Alpha: show every scene so testers can reach them all
+    [SerializeField] public bool unlockAllChapters = true;
 
     void Awake()
     {
+        // Free the mouse when arriving back at the menu from a level
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         GetComponent<PanelRenderer>().RegisterUIReloadCallback(OnUIReload);
     }
 
@@ -37,35 +49,29 @@ public class IntroMenuController: MonoBehaviour
     {
         // get div that holds all chapter buttons
         centredDiv = root.Q<VisualElement>("CentredDiv");
-        
-        // Get currently unlocked chapters from global state script and create a button for each
-        for (int i = 1; i <= ProgressionState.Instance.CurrentSegment; i++)
+        // remove old buttons so they don't double up after Credits > Back
+        centredDiv.Clear();
+
+        // Alpha shows every scene, otherwise only as many as the player has unlocked
+        int count = unlockAllChapters ? scenes.Length
+            : Mathf.Min(scenes.Length, ProgressionState.Instance.CurrentSegment);
+
+        for (int i = 0; i < count; i++)
         {
-            // Instantiate template button
+            MenuScene entry = scenes[i];
+            // Instantiate template button and add it to the centre div
             var buttonContainer = chapterButtonTemplate.Instantiate();
-            // Get root element of button
             var chapterButtonElement = buttonContainer.Q<ChapterButtonElement>();
-            // Add it to our centre div
             centredDiv.Add(chapterButtonElement);
-            // Set up button
-            switch (i)
-            {
-                case 1:
-                    chapterButtonElement.Init(ch1icon, i, ch1Scene, loadingScreenPanel);
-                    break;
-                case 2:
-                    chapterButtonElement.Init(ch2icon, i, ch2Scene, loadingScreenPanel);
-                    break;
-                case 3:
-                    chapterButtonElement.Init(ch3icon, i, ch3Scene, loadingScreenPanel);
-                    break;
-            }
+            // Set up button, then replace "Chapter N" with this scene's label
+            chapterButtonElement.Init(entry.icon, i + 1, entry.sceneName, loadingScreenPanel);
+            chapterButtonElement.Q<Label>("ChapterLabel").text = entry.label;
         }
-        
+
         // Set quit action for quit button
         quitButton = root.Q<Button>("QuitButton");
         quitButton.clicked += Application.Quit;
-        
+
         // Set credits menu action for credits button
         creditsButton = root.Q<Button>("CreditsButton");
         creditsButton.clicked += () =>

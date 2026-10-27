@@ -77,7 +77,7 @@ public class ComboLockUIController: MonoBehaviour
       {
          // TODO update puzzle completion state in ProgressionState
          if (dial1Number.text + dial2Number.text + dial3Number.text == answer)
-            gameObject.GetComponentInParent<ComboLockController>().DisengageInteract();
+            gameObject.GetComponentInParent<InteractiveViewController>().DisengageInteract();
       };
    }
 }

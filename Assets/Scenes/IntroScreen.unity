@@ -815,6 +815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadingScreenController
   sceneName: 
+  FadeDuration: 3
 --- !u!1 &1739810794
 GameObject:
   m_ObjectHideFlags: 0
@@ -1150,14 +1151,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntroMenuController
   chapterButtonTemplate: {fileID: 9197481963319205126, guid: 67cf5f1a09b7b4a92bc805fdc84a814d, type: 3}
-  ch1icon: {fileID: 2800000, guid: 1cb3768a1791945c89e6f0ada4c1cae5, type: 3}
-  ch1Scene: StealthScene
-  ch2icon: {fileID: 2800000, guid: 7b0114ad40a9a4fb9add678d6433e1c4, type: 3}
-  ch2Scene: RealmSwitchScene
-  ch3icon: {fileID: 2800000, guid: adbb73c6206b4426ab021fc6ed25c15f, type: 3}
-  ch3Scene: PuzzleUITest
+  scenes:
+  - label: Segment 1
+    sceneName: DemoPlatforming
+    icon: {fileID: 2800000, guid: 1cb3768a1791945c89e6f0ada4c1cae5, type: 3}
+  - label: Realm Switch
+    sceneName: RealmSwitchTest
+    icon: {fileID: 2800000, guid: 7b0114ad40a9a4fb9add678d6433e1c4, type: 3}
+  - label: Stealth
+    sceneName: StealthScene
+    icon: {fileID: 2800000, guid: adbb73c6206b4426ab021fc6ed25c15f, type: 3}
+  - label: Puzzles
+    sceneName: PuzzleUITest
+    icon: {fileID: 2800000, guid: cf389985a441f4671a9a331de15881b9, type: 3}
+  - label: Floor Plan
+    sceneName: PreAlphaFloorPlanTest
+    icon: {fileID: 2800000, guid: cf389985a441f4671a9a331de15881b9, type: 3}
   creditsScreenRenderer: {fileID: 61166056}
   loadingScreenPanel: {fileID: 1593882867}
+  unlockAllChapters: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -498,6 +498,7 @@ GameObject:
   - component: {fileID: 455134469}
   - component: {fileID: 455134468}
   - component: {fileID: 455134467}
+  - component: {fileID: 455134471}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -534,19 +535,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::movementController
   camera: {fileID: 0}
   walkspeed: 15
+  sprintSpeed: 22
   speed: 0
   gravity: 19.6
   jumpHeight: 4
+  progressionState: {fileID: 0}
   groundDetect: {fileID: 0}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
     m_Bits: 0
   detectionLevel: 0
+  isDetected: 0
   crouchHeight: 1
   crouchSpeed: 6
   crouchTransitionSpeed: 10
   crouching: 0
+  interactableMask:
+    serializedVersion: 2
+    m_Bits: 0
+  inDream: 0
 --- !u!143 &455134469
 CharacterController:
   m_ObjectHideFlags: 0
@@ -588,6 +596,21 @@ Transform:
   - {fileID: 92783328}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &455134471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455134466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e18688182480246b78b11990c235e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReturnToIntro
+  introScene: IntroScreen
+  listenForKey: 1
+  menuKey: 27
 --- !u!1 &546261411
 GameObject:
   m_ObjectHideFlags: 0

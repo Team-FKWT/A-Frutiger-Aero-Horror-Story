@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
-public class FinishZone : MonoBehaviour
+public class FinishPoint : MonoBehaviour
 {
     public UIDocument uiDocument;
 
