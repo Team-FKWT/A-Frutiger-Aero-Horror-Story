@@ -1322,6 +1322,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6947191766596646238, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1086341975}
+    - targetCorrespondingSourceObject: {fileID: 6947191766596646238, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1086341976}
+    - targetCorrespondingSourceObject: {fileID: 6947191766596646238, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1086341977}
   m_SourcePrefab: {fileID: 100100000, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
 --- !u!1 &1086341973 stripped
 GameObject:
@@ -1357,7 +1363,37 @@ MonoBehaviour:
   solvedPuzzles: []
   activeSwitchPoint: {fileID: 0}
   endingStarted: 0
-  pillsLeft: 0
+--- !u!114 &1086341976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086341973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e18688182480246b78b11990c235e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReturnToIntro
+  introScene: IntroScreen
+  listenForKey: 1
+  menuKey: 27
+--- !u!114 &1086341977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086341973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d51897f1e11a14caab69ee406c092d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FlyMode
+  toggleKey: 20
+  speed: 10
+  fastMultiplier: 2.5
+  startFlying: 0
 --- !u!1 &1102830078
 GameObject:
   m_ObjectHideFlags: 0

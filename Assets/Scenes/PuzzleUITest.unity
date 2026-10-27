@@ -2157,8 +2157,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6947191766596646238, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4131417272173964040}
   m_SourcePrefab: {fileID: 100100000, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
+--- !u!1 &4131417272173964039 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6947191766596646238, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
+  m_PrefabInstance: {fileID: 4131417272173964038}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4131417272173964040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4131417272173964039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e18688182480246b78b11990c235e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReturnToIntro
+  introScene: IntroScreen
+  listenForKey: 1
+  menuKey: 27
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
