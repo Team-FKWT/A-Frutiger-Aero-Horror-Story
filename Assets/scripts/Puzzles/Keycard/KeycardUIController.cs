@@ -191,9 +191,9 @@ public class KeycardUIController : MonoBehaviour
         if (cardsRequired >= 1)
             correct = correct && insertedCards[0] == KeycardColor.Red;
         if (cardsRequired >= 2)
-            correct = correct && insertedCards[0] == KeycardColor.Green;
+            correct = correct && insertedCards[1] == KeycardColor.Green;
         if (cardsRequired >= 3)
-            correct = correct && insertedCards[0] == KeycardColor.Blue;
+            correct = correct && insertedCards[2] == KeycardColor.Blue;
 
         if (correct)
         {
