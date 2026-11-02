@@ -46,7 +46,7 @@ public class stealth_detector : MonoBehaviour
             if (playerController.detectionLevel >= 100)
             {
                 playerController.detectionLevel = 0;
-                SceneManager.LoadScene("StealthScene");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
             yield return new WaitForSeconds(detectionRate);
         }
