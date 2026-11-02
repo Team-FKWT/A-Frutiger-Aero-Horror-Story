@@ -152,7 +152,7 @@ public class SwitchTransitionFeedback : MonoBehaviour
         textObject.transform.SetParent(parent, false);
         Text text = textObject.AddComponent<Text>();
         text.text = content;
-        text.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+        text.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
         text.fontSize = size;
         text.color = color;
         text.alignment = alignment;
