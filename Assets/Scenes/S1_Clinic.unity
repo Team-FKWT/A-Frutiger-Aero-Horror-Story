@@ -705,20 +705,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f47d855bbddf26ecc883b879c3325cb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::stealth_dummy
-  detectionRange: 10
+  detectionRange: 30
   detectionRate: 0.25
   detectionAmount: 5
   crouchMultiplier: 0.5
   player: {fileID: 1086341973}
   patrolPoints:
-  - {x: -5, y: 0, z: -16}
-  - {x: -5, y: 0, z: 2}
-  - {x: 5, y: 0, z: 2}
+  - {x: -5, y: 1, z: -16}
+  - {x: -5, y: 1, z: 2}
+  - {x: 5, y: 1, z: 2}
   loopPath: 0
   moveSpeed: 2
   turnSpeed: 180
   guardTime: 3
-  guardLookAngle: 40
+  guardLookAngle: 60
   guardLookPeriod: 2
   alertTime: 3
   postAlertGuardTime: 2
@@ -815,7 +815,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5, y: 1, z: -16}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4551,7 +4551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4774044325170963668, guid: bedc39358e81f078c8bb2b0744073447, type: 3}
       propertyPath: panPoints.Array.data[0].y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4774044325170963668, guid: bedc39358e81f078c8bb2b0744073447, type: 3}
       propertyPath: panPoints.Array.data[0].z
@@ -4562,12 +4562,20 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4774044325170963668, guid: bedc39358e81f078c8bb2b0744073447, type: 3}
+      propertyPath: panPoints.Array.data[1].y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774044325170963668, guid: bedc39358e81f078c8bb2b0744073447, type: 3}
       propertyPath: panPoints.Array.data[1].z
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4774044325170963668, guid: bedc39358e81f078c8bb2b0744073447, type: 3}
       propertyPath: panPoints.Array.data[2].x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774044325170963668, guid: bedc39358e81f078c8bb2b0744073447, type: 3}
+      propertyPath: panPoints.Array.data[2].y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4774044325170963668, guid: bedc39358e81f078c8bb2b0744073447, type: 3}
       propertyPath: panPoints.Array.data[2].z
