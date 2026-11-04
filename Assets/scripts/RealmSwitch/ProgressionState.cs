@@ -16,7 +16,7 @@ public enum EndingChoice { ExposeTheTruth, RemainIgnorant }
 /// and which puzzles are solved. Survives realm switches and scene loads.
 /// Everything teammates need is a public method or event on
 /// ProgressionState.Instance.
- 
+
 [DefaultExecutionOrder(-100)] // Awake runs before other scripts, so Instance is ready in their OnEnable
 public class ProgressionState : MonoBehaviour
 {
@@ -29,6 +29,7 @@ public class ProgressionState : MonoBehaviour
     [SerializeField] private List<string> solvedPuzzles = new List<string>();
     [SerializeField] private SwitchPoint activeSwitchPoint;
     [SerializeField] private bool endingStarted;
+    [SerializeField] private int pills;
 
     /// Fired after the realm changes. Argument is the new realm.
     public event Action<Realm> RealmChanged;
@@ -98,7 +99,7 @@ public class ProgressionState : MonoBehaviour
 
     /// Starts the ending hand-off and fires EndingStarted. Called by EndingTrigger
     /// at the final exit (or by the debug overlay). Ignored if the ending already started.
-    
+
     public void StartEnding()
     {
         if (endingStarted) return;
@@ -112,6 +113,21 @@ public class ProgressionState : MonoBehaviour
     {
         if (!endingStarted) return;
         EndingChosen?.Invoke(choice);
+    }
+
+    // ---------- Pills ----------
+
+    /// Fired when the pill count changes. Argument is the new count.
+    public event Action<int> PillsChanged;
+
+    /// How many pills the player has left.
+    public int Pills => pills;
+
+    /// Sets the pill count. Called when a segment starts.
+    public void SetPills(int amount)
+    {
+        pills = Mathf.Max(0, amount);
+        PillsChanged?.Invoke(pills);
     }
 
     // ---------- Switching ----------
@@ -130,7 +146,7 @@ public class ProgressionState : MonoBehaviour
     /// Call this when the player presses the switch key. If switching is allowed,
     /// flips the realm, fires RealmChanged and returns true. If not, fires
     /// SwitchDenied and returns false.
-     
+
     public bool TrySwitch()
     {
         SwitchBlockReason reason = GetSwitchBlockReason();
@@ -139,6 +155,7 @@ public class ProgressionState : MonoBehaviour
             SwitchDenied?.Invoke(reason);
             return false;
         }
+        if (pills > 0) SetPills(pills - 1);
         currentRealm = currentRealm == Realm.Reality ? Realm.Dream : Realm.Reality;
         RealmChanged?.Invoke(currentRealm);
         return true;
