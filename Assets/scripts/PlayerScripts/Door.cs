@@ -9,8 +9,26 @@ public class InteractiveDoor : MonoBehaviour
     private BoxCollider solidWall;
     private BoxCollider interactionTrigger;
 
+    [Header("Audio Settings")]
+    [Tooltip("Drag your door opening sound clip here.")]
+    public AudioClip openSound;
+    [Tooltip("Optional: Drag your door closing sound clip here.")]
+    public AudioClip closeSound;
+
+    private AudioSource audioSource;
+
     void Start()
     {
+        // Automatically set up an AudioSource component so you don't have to manual configure one
+        audioSource = gameObject.GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+        
+        // Ensure the sound doesn't blast immediately when starting the game
+        audioSource.playOnAwake = false;
+
         // 1. Get the visual mesh component of this door model
         doorVisual = GetComponentInChildren<MeshRenderer>();
         if (doorVisual == null) return; 
@@ -42,6 +60,16 @@ public class InteractiveDoor : MonoBehaviour
     void ToggleDoor()
     {
         isDoorOpen = !isDoorOpen; // Flip between open and closed
+
+        // Play the appropriate sound effect safely if assigned in the Inspector
+        if (isDoorOpen && openSound != null)
+        {
+            audioSource.PlayOneShot(openSound);
+        }
+        else if (!isDoorOpen && closeSound != null)
+        {
+            audioSource.PlayOneShot(closeSound);
+        }
 
         // Turn the visuals on or off
         if (doorVisual != null) doorVisual.enabled = !isDoorOpen;
