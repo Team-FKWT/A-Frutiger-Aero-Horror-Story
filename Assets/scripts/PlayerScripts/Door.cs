@@ -6,8 +6,7 @@ public class InteractiveDoor : MonoBehaviour
     private bool isDoorOpen = false;
     
     private MeshRenderer doorVisual;
-    private BoxCollider solidWall;
-    private BoxCollider interactionTrigger;
+    private BoxCollider doorCollider; // The single consolidated collider
 
     [Header("Audio Settings")]
     [Tooltip("Drag your door opening sound clip here.")]
@@ -16,52 +15,73 @@ public class InteractiveDoor : MonoBehaviour
     public AudioClip closeSound;
 
     private AudioSource audioSource;
+    
+    // Store original sizes to calculate open/closed state modifications
+    private Vector3 closedSize;
+    private Vector3 closedCenter;
 
     void Start()
     {
-        // Automatically set up an AudioSource component so you don't have to manual configure one
+        // Automatically set up an AudioSource component
         audioSource = gameObject.GetComponent<AudioSource>();
         if (audioSource == null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
         
-        // Ensure the sound doesn't blast immediately when starting the game
         audioSource.playOnAwake = false;
 
-        // 1. Get the visual mesh component of this door model
+        // Get the visual mesh component of this door model
         doorVisual = GetComponentInChildren<MeshRenderer>();
-        if (doorVisual == null) return; 
+        if (doorVisual == null) 
+        {
+            Debug.LogError("InteractiveDoor: No MeshRenderer found in children! Please attach one.");
+            return; 
+        }
 
-        // Measure the model's exact 3D size and convert to local space
+        // Measure the child model's exact bounds
         Bounds bounds = doorVisual.bounds;
-        Vector3 localSize = transform.InverseTransformVector(bounds.size);
+        Vector3 parentLocalSize = transform.InverseTransformVector(bounds.size);
 
-        // 2. Automatically build the SOLID WALL collider
-        solidWall = gameObject.AddComponent<BoxCollider>();
-        solidWall.size = localSize;
-        solidWall.isTrigger = false; 
+        // Create our SINGLE BoxCollider. It starts as a solid blocking wall.
+        doorCollider = gameObject.AddComponent<BoxCollider>();
+        doorCollider.size = new Vector3(parentLocalSize.x, parentLocalSize.y, parentLocalSize.z);
+        doorCollider.center = Vector3.zero;
+        doorCollider.isTrigger = false; // Solid physics block when closed
 
-        // 3. Automatically build the INTERACTION HITBOX trigger zone
-        interactionTrigger = gameObject.AddComponent<BoxCollider>();
-        interactionTrigger.size = new Vector3(localSize.x * 1.2f, localSize.y, localSize.z + 2.0f);
-        interactionTrigger.isTrigger = true; 
+        // Cache the closed dimensions for resetting later
+        closedSize = doorCollider.size;
+        closedCenter = doorCollider.center;
     }
 
     void Update()
     {
-        // If the player is standing inside this specific door's hitbox and presses E
+        // Because the collider is solid when closed, we use a small distance or overlap check 
+        // to see if the player is standing in front of the door since OnTriggerEnter won't fire for solid objects.
+        CheckPlayerProximity();
+
         if (isPlayerNearby && Input.GetKeyDown(KeyCode.E))
         {
             ToggleDoor();
         }
     }
 
+    void CheckPlayerProximity()
+    {
+        // Quick distance check from the door to find the player
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null) return;
+
+        // If player is within 2.5 units of the door center, they are nearby
+        float distance = Vector3.Distance(transform.position, player.transform.position);
+        isPlayerNearby = (distance <= 2.5f);
+    }
+
     void ToggleDoor()
     {
-        isDoorOpen = !isDoorOpen; // Flip between open and closed
+        isDoorOpen = !isDoorOpen; 
 
-        // Play the appropriate sound effect safely if assigned in the Inspector
+        // Play audio safely
         if (isDoorOpen && openSound != null)
         {
             audioSource.PlayOneShot(openSound);
@@ -71,29 +91,31 @@ public class InteractiveDoor : MonoBehaviour
             audioSource.PlayOneShot(closeSound);
         }
 
-        // Turn the visuals on or off
+        // Toggle visual rendering of the door mesh
         if (doorVisual != null) doorVisual.enabled = !isDoorOpen;
 
-        // Turn the physical blocking wall on or off
-        if (solidWall != null) solidWall.enabled = !isDoorOpen;
+        // Update the single collider shape so it doesn't block the hallway
+        UpdateColliderShape();
     }
 
-    // Detect when the player enters this specific door's radar zone
-    private void OnTriggerEnter(Collider other)
+    void UpdateColliderShape()
     {
-        // Note: Make sure your player object has the tag "Player" set in Unity!
-        if (other.CompareTag("Player") || other.gameObject.name.Contains("Player"))
+        if (doorCollider == null) return;
+
+        if (isDoorOpen)
         {
-            isPlayerNearby = true;
+            // WHEN OPEN: Shrink the collider to just one of the frame edges (the "hinge" wall side)
+            // This leaves the doorway completely hollow so you can walk right through.
+            doorCollider.size = new Vector3(closedSize.x * 0.1f, closedSize.y, closedSize.z);
+            doorCollider.center = new Vector3(-closedSize.x * 0.45f, closedCenter.y, closedCenter.z);
+            doorCollider.isTrigger = false; // Keeps the frame edge solid, but clears the walkway
         }
-    }
-
-    // Detect when the player leaves this specific door's radar zone
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player") || other.gameObject.name.Contains("Player"))
+        else
         {
-            isPlayerNearby = false;
+            // WHEN CLOSED: Reset back to a full solid wall covering the entire gap
+            doorCollider.size = closedSize;
+            doorCollider.center = closedCenter;
+            doorCollider.isTrigger = false;
         }
     }
 }
