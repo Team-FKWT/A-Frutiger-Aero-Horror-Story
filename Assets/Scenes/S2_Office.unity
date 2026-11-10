@@ -3231,6 +3231,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3249285922639675987, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
+      propertyPath: pausePanel
+      value: 
+      objectReference: {fileID: 1342581843}
+    - target: {fileID: 3249285922639675987, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
       propertyPath: crouchSpeed
       value: 2.5
       objectReference: {fileID: 0}
@@ -3936,6 +3940,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -4612284394345184929, guid: a86ecd511b7e1614b9a6cbd8466f4c5d, type: 3}
+--- !u!1 &1342581843 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4230333801025627691, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
+  m_PrefabInstance: {fileID: 1086341972}
+  m_PrefabAsset: {fileID: 0}
 --- !u!64 &1351635159
 MeshCollider:
   m_ObjectHideFlags: 0
