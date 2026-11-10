@@ -1,0 +1,75 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:ui="UnityEngine.UIElements"
+         xmlns:uie="UnityEditor.UIElements"
+         noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd"
+         editor-extension-mode="False">
+    <ui:VisualElement name="Background"
+                      style="flex-grow: 1; justify-content: center; align-items: center; background-color: rgb(58, 132, 210);">
+        <ui:VisualElement name="SkyBand"
+                          style="position: absolute; left: 0; right: 0; top: 0; height: 45%; background-color: rgb(120, 190, 240);" />
+        <ui:VisualElement name="GrassBand"
+                          style="position: absolute; left: 0; right: 0; bottom: 0; height: 18%; background-color: rgb(110, 185, 90);" />
+
+        <ui:VisualElement name="LoginWindow"
+                          style="width: 820px; background-color: rgb(228, 242, 253); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-left-radius: 22px; border-bottom-right-radius: 22px; border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); overflow: hidden;">
+            <ui:VisualElement name="TitleBar"
+                              style="flex-direction: row; align-items: center; justify-content: space-between; height: 64px; padding-left: 24px; padding-right: 10px; background-color: rgb(36, 112, 205);">
+                <ui:Label text="Müllerin Life Sciences: Staff Workstation"
+                          style="color: white; font-size: 28px; -unity-font-style: bold;" />
+                <ui:Button name="CloseButton" text="X"
+                           style="width: 50px; height: 46px; font-size: 26px; -unity-font-style: bold; color: white; background-color: rgb(210, 70, 60); border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Body"
+                              style="align-items: center; padding-top: 36px; padding-bottom: 36px; padding-left: 40px; padding-right: 40px;">
+                <ui:VisualElement name="Avatar"
+                                  style="width: 120px; height: 120px; margin-bottom: 14px; background-color: rgb(80, 190, 170); border-top-left-radius: 60px; border-top-right-radius: 60px; border-bottom-left-radius: 60px; border-bottom-right-radius: 60px; border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px; border-left-color: white; border-right-color: white; border-top-color: white; border-bottom-color: white;" />
+                <ui:Label name="UserName" text="user"
+                          style="font-size: 36px; -unity-font-style: bold; color: rgb(20, 60, 110); margin-bottom: 22px;" />
+                <ui:TextField name="PasswordField" label=""
+                              style="width: 520px; height: 60px; font-size: 32px; margin-bottom: 20px;" />
+                <ui:Button name="LoginButton" text="Log In"
+                           style="width: 260px; height: 64px; font-size: 28px; -unity-font-style: bold; color: white; background-color: rgb(60, 160, 80); border-top-left-radius: 14px; border-top-right-radius: 14px; border-bottom-left-radius: 14px; border-bottom-right-radius: 14px;" />
+                <ui:Label name="StatusText" text="Type your password and press Enter."
+                          style="margin-top: 24px; font-size: 26px; color: rgb(40, 70, 110); white-space: normal; -unity-text-align: middle-center; max-width: 720px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="Desktop"
+                          style="display: none; position: absolute; left: 0; right: 0; top: 0; bottom: 0;">
+            <ui:VisualElement name="Icons"
+                              style="position: absolute; left: 30px; top: 30px;">
+                <ui:VisualElement style="align-items: center; width: 150px; margin-bottom: 26px;">
+                    <ui:VisualElement style="width: 72px; height: 60px; background-color: rgb(250, 210, 90); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;" />
+                    <ui:Label text="My Documents" style="color: white; font-size: 20px; margin-top: 6px; -unity-text-align: middle-center;" />
+                </ui:VisualElement>
+                <ui:VisualElement style="align-items: center; width: 150px; margin-bottom: 26px;">
+                    <ui:VisualElement style="width: 60px; height: 70px; background-color: rgb(200, 230, 245); border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; border-left-color: rgb(120, 170, 200); border-right-color: rgb(120, 170, 200); border-top-color: rgb(120, 170, 200); border-bottom-color: rgb(120, 170, 200); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;" />
+                    <ui:Label text="Recycle Bin" style="color: white; font-size: 20px; margin-top: 6px; -unity-text-align: middle-center;" />
+                </ui:VisualElement>
+                <ui:VisualElement style="align-items: center; width: 150px;">
+                    <ui:VisualElement style="width: 60px; height: 72px; background-color: rgb(255, 255, 255); border-top-right-radius: 14px; border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; border-left-color: rgb(150, 170, 190); border-right-color: rgb(150, 170, 190); border-top-color: rgb(150, 170, 190); border-bottom-color: rgb(150, 170, 190);" />
+                    <ui:Label text="Hypnosom_Trial_Data" style="color: white; font-size: 20px; margin-top: 6px; -unity-text-align: middle-center; white-space: normal;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <ui:VisualElement name="NoticeWindow"
+                              style="position: absolute; left: 310px; top: 120px; width: 660px; background-color: rgb(240, 248, 255); border-top-left-radius: 18px; border-top-right-radius: 18px; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px; border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; border-left-color: white; border-right-color: white; border-top-color: white; border-bottom-color: white; overflow: hidden;">
+                <ui:VisualElement style="flex-direction: row; align-items: center; justify-content: space-between; height: 58px; padding-left: 22px; padding-right: 8px; background-color: rgb(36, 112, 205);">
+                    <ui:Label text="Security Notice" style="color: white; font-size: 26px; -unity-font-style: bold;" />
+                    <ui:Button name="DesktopCloseButton" text="X"
+                               style="width: 48px; height: 42px; font-size: 24px; -unity-font-style: bold; color: white; background-color: rgb(210, 70, 60); border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;" />
+                </ui:VisualElement>
+                <ui:Label name="DesktopMessage" text="Welcome back."
+                          style="padding-top: 30px; padding-bottom: 34px; padding-left: 30px; padding-right: 30px; font-size: 28px; color: rgb(20, 60, 110); white-space: normal; -unity-text-align: middle-center;" />
+            </ui:VisualElement>
+
+            <ui:VisualElement name="Taskbar"
+                              style="position: absolute; left: 0; right: 0; bottom: 0; height: 60px; flex-direction: row; align-items: center; justify-content: space-between; background-color: rgb(36, 94, 190); border-top-width: 3px; border-top-color: rgb(120, 180, 240);">
+                <ui:Label text="start"
+                          style="height: 60px; padding-left: 26px; padding-right: 34px; -unity-text-align: middle-left; font-size: 28px; -unity-font-style: bold-and-italic; color: white; background-color: rgb(60, 160, 70); border-top-right-radius: 24px; border-bottom-right-radius: 24px;" />
+                <ui:Label text="9:41 PM"
+                          style="height: 60px; padding-left: 22px; padding-right: 22px; -unity-text-align: middle-center; font-size: 22px; color: white; background-color: rgb(20, 140, 220);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
