@@ -130,6 +130,14 @@ public class ProgressionState : MonoBehaviour
         PillsChanged?.Invoke(pills);
     }
 
+    /// Adds pills to the player's current count.
+    /// <param name="amount">The number of pills to add.</param>
+    public void AddPills(int amount)
+    {
+        if (amount <= 0) return;
+        SetPills(pills + amount);
+    }
+
     // ---------- Switching ----------
 
     /// Returns why switching is blocked right now, or None if it is allowed.

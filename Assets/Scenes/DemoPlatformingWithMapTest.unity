@@ -224,6 +224,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KeycardUIController
   puzzleState: {fileID: 394960443}
   puzzleId: S1_Keycards
+  puzzleActor: {fileID: 0}
+  cardsRequired: 3
 --- !u!1 &165455512
 GameObject:
   m_ObjectHideFlags: 0
@@ -2410,6 +2412,7 @@ MonoBehaviour:
   interactableMask:
     serializedVersion: 2
     m_Bits: 64
+  pausePanel: {fileID: 0}
   inDream: 0
 --- !u!1 &2044926141
 GameObject:
@@ -2627,6 +2630,7 @@ GameObject:
   - component: {fileID: 2096776757}
   - component: {fileID: 2096776756}
   - component: {fileID: 2096776755}
+  - component: {fileID: 2096776761}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2716,6 +2720,7 @@ MonoBehaviour:
   solvedPuzzles: []
   activeSwitchPoint: {fileID: 1277733937}
   endingStarted: 0
+  pills: 0
 --- !u!4 &2096776760
 Transform:
   m_ObjectHideFlags: 0
@@ -2731,6 +2736,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2096776761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096776754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0fc96b38aaa4b34db02ea874ac8fbf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SwitchTransitionFeedback
+  duration: 1.1
+  screenWashOpacity: 0.35
+  dreamTransitionSound: {fileID: 8300000, guid: 1ffbc51722833cc4db608a2f2d3d8e04, type: 3}
+  realityTransitionSound: {fileID: 8300000, guid: a8154de25906ea34691186d37c3229e2, type: 3}
+  volume: 0.65
 --- !u!1 &2139556460
 GameObject:
   m_ObjectHideFlags: 0
