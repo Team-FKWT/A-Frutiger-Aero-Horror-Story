@@ -39,27 +39,32 @@ public class ComputerController : MonoBehaviour
         // Enable cursor
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
-        
+        // Let the screen know the player sat down (e.g. a login box can take keyboard focus) - Adam
+        BroadcastMessage("OnViewOpened", SendMessageOptions.DontRequireReceiver);
     }
 
     public void Update()
     {
-        // If active, check for interact key to disengage
-        if (isActive)
-        {
-            if (Keyboard.current.eKey.wasPressedThisFrame)
-            {
-                isActive = false;
-                // Lock cursor again
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-                // Switch camera back
-                closeupCamera.enabled = false;
-                playerCamera.enabled = true;
-                // Reenable controllers
-                playerMovementController.enabled = true;
-                playerMouseController.enabled = true;
-            }
-        }
+        // If active, check for interact key to disengage (ignored while typing in a text box - Adam)
+        if (isActive && !TextInputGuard.IsTyping && Keyboard.current.eKey.wasPressedThisFrame)
+            DisengageInteract();
+    }
+
+    // Leaves the close-up view. Public so on-screen buttons (like a close X) can call it - Adam
+    public void DisengageInteract()
+    {
+        if (!isActive) return;
+        isActive = false;
+        // Lock cursor again
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        // Switch camera back
+        closeupCamera.enabled = false;
+        playerCamera.enabled = true;
+        // Reenable controllers
+        playerMovementController.enabled = true;
+        playerMouseController.enabled = true;
+        // Let the screen know the player left (e.g. a login box gives up keyboard focus) - Adam
+        BroadcastMessage("OnViewClosed", SendMessageOptions.DontRequireReceiver);
     }
 }

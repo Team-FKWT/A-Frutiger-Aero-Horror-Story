@@ -15,6 +15,7 @@ public class ReturnToIntro : MonoBehaviour
 
     void Update()
     {
+        if (TextInputGuard.IsTyping) return; // don't leave while the player types "M" in a text box
         if (listenForKey && Keyboard.current != null && Keyboard.current[menuKey].wasPressedThisFrame)
             GoToIntro();
     }

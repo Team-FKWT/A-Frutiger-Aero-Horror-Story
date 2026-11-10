@@ -89,6 +89,7 @@ public class RealmDebugOverlay : MonoBehaviour
 
     private static bool TogglePressed()
     {
+        if (TextInputGuard.IsTyping) return false;
 #if ENABLE_INPUT_SYSTEM
         return Keyboard.current != null && Keyboard.current.backquoteKey.wasPressedThisFrame;
 #else
@@ -98,6 +99,7 @@ public class RealmDebugOverlay : MonoBehaviour
 
     private static bool ForceEndingPressed()
     {
+        if (TextInputGuard.IsTyping) return false;
 #if ENABLE_INPUT_SYSTEM
         return Keyboard.current != null && Keyboard.current.equalsKey.wasPressedThisFrame;
 #else

@@ -45,6 +45,7 @@ public class SwitchToggle : MonoBehaviour
 
     private void Update()
     {
+        if (TextInputGuard.IsTyping) return; // typing "q" in a text box shouldn't switch realms
         if (!Input.GetKeyDown(toggleKey)) return;
 
         // Prefer ProgressionState rules if available.
