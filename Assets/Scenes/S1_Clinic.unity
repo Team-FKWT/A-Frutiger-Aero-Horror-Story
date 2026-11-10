@@ -903,6 +903,8 @@ GameObject:
   - component: {fileID: 308637630}
   - component: {fileID: 308637629}
   - component: {fileID: 308637633}
+  - component: {fileID: 308637635}
+  - component: {fileID: 308637634}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -988,7 +990,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf28c04a525fa4418c15ddce37fb3c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SegmentPills
-  startingPills: 5
+  startingPills: 0
+--- !u!114 &308637634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308637628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdbe6771bea223f4f968a86722181fc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PillInteractable
+--- !u!114 &308637635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308637628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0fc96b38aaa4b34db02ea874ac8fbf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SwitchTransitionFeedback
+  duration: 1.1
+  screenWashOpacity: 0.35
+  dreamTransitionSound: {fileID: 8300000, guid: 1ffbc51722833cc4db608a2f2d3d8e04, type: 3}
+  realityTransitionSound: {fileID: 8300000, guid: a8154de25906ea34691186d37c3229e2, type: 3}
+  volume: 0.65
 --- !u!1 &321541137
 GameObject:
   m_ObjectHideFlags: 0
