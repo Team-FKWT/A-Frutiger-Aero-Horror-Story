@@ -2817,6 +2817,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1611793464318103846, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2487182192685142467, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3249285922639675987, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
       propertyPath: walkspeed
       value: 5
@@ -2828,6 +2836,10 @@ PrefabInstance:
     - target: {fileID: 3249285922639675987, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
       propertyPath: sprintSpeed
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4230333801025627691, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6947191766596646238, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
       propertyPath: m_Name

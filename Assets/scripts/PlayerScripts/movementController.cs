@@ -47,6 +47,8 @@ public class movementController : MonoBehaviour
     public LayerMask interactableMask;
     private const float InteractDistance = 5.0f;
 
+    public GameObject pausePanel;
+
     public bool inDream = ProgressionState.Instance != null && ProgressionState.Instance.CurrentRealm == Realm.Dream;
     //check if in dream or not, changes ur moveset
 
@@ -116,6 +118,9 @@ public class movementController : MonoBehaviour
             {
                 CastInteract();
             }
+            // Pause menu (Esc)
+            if (keyboard.escapeKey.wasPressedThisFrame)
+                pausePanel.SetActive(true);
             // Ternary operators cut down on overhead.
             input.x = (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed ? 1f : 0f)
                 - (keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed ? 1f : 0f);
