@@ -905,6 +905,7 @@ GameObject:
   - component: {fileID: 308637633}
   - component: {fileID: 308637635}
   - component: {fileID: 308637634}
+  - component: {fileID: 308637636}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1020,6 +1021,23 @@ MonoBehaviour:
   dreamTransitionSound: {fileID: 8300000, guid: 1ffbc51722833cc4db608a2f2d3d8e04, type: 3}
   realityTransitionSound: {fileID: 8300000, guid: a8154de25906ea34691186d37c3229e2, type: 3}
   volume: 0.65
+--- !u!114 &308637636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308637628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98e87c85285ea23468c3d2b1a1bfa742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleStateRestorer
+  puzzleId: S1_Keycards
+  actorsToTrigger:
+  - {fileID: 2002209601}
+  objectsToHide:
+  - {fileID: 1940285112}
 --- !u!1 &321541137
 GameObject:
   m_ObjectHideFlags: 0
@@ -2072,7 +2090,7 @@ GameObject:
   - component: {fileID: 684873330}
   - component: {fileID: 684873329}
   - component: {fileID: 684873328}
-  - component: {fileID: 684873327}
+  - component: {fileID: 684873332}
   m_Layer: 0
   m_Name: Exit_X
   m_TagString: Untagged
@@ -2080,18 +2098,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &684873327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 684873326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d797cd4774fa531ab70843a42463c06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TEMPending_script
 --- !u!65 &684873328
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2185,6 +2191,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &684873332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684873326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5887ceaffd4825b4d935b623c89b5c2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SegmentExit
+  nextSceneName: S2_Office
+  nextSegment: 2
+  requiredPuzzleIds:
+  - S1_Keycards
+  realityOnly: 1
+  lockedMessage: The exit won't open. Something here still needs doing.
+  dreamMessage: The way out flickers and fades. Not from here.
+  walkInToUse: 1
 --- !u!1 &694912527
 GameObject:
   m_ObjectHideFlags: 0
