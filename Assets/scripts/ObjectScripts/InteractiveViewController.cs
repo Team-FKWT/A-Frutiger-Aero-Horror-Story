@@ -7,15 +7,17 @@ public class InteractiveViewController : MonoBehaviour
 {
     // Reference to UI Panel Renderer
     [SerializeField] public PanelRenderer panelRenderer;
-    
+
     // Reference to player controller objects
     private movementController playerMovementController;
     private mouseController playerMouseController;
     private GameObject player;
-    
+
     // Whether or not computer is engaged
     private bool isActive = false;
-    
+    // Frame the panel was opened on, so the same E press can't also close it - Adam
+    private int openedFrame = -1;
+
     // All Interactable-layer objects should implement OnInteract() to handle user interaction.
     public void OnInteract(object playerReference)
     {
@@ -27,8 +29,9 @@ public class InteractiveViewController : MonoBehaviour
         }
 
         isActive = true;
+        openedFrame = Time.frameCount;
         // Get reference to player controllers
-        player = (GameObject) playerReference;
+        player = (GameObject)playerReference;
         playerMovementController = player.GetComponent<movementController>();
         playerMouseController = player.GetComponent<mouseController>();
         // Disable player movement & mouse control
@@ -40,17 +43,19 @@ public class InteractiveViewController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
     }
-    
+
     public void Update()
     {
         // If active, check for interact key to disengage
+        // (not on the frame it opened, and not while typing in a text box - Adam)
         if (!isActive) return;
-        if (Keyboard.current.eKey.wasPressedThisFrame)
+        if (Time.frameCount > openedFrame && !TextInputGuard.IsTyping && Keyboard.current.eKey.wasPressedThisFrame)
             DisengageInteract();
     }
 
     public void DisengageInteract()
     {
+        if (!isActive) return; // already closed - Adam
         isActive = false;
         // Disable panel renderer
         panelRenderer.enabled = false;

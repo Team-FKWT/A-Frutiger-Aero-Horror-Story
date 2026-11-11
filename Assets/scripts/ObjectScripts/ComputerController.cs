@@ -14,6 +14,8 @@ public class ComputerController : MonoBehaviour
     
     // Whether or not computer is engaged
     private bool isActive = false;
+    // Frame the computer was opened on, so the same E press can't also close it - Adam
+    private int openedFrame = -1;
     
     // All Interactable-layer objects should implement OnInteract() to handle user interaction.
     public void OnInteract(object playerReference)
@@ -25,6 +27,7 @@ public class ComputerController : MonoBehaviour
             return;
         }
         isActive = true;
+        openedFrame = Time.frameCount;
         player = (GameObject) playerReference;
         // Get reference to camera of player object
         playerCamera = player.GetComponentInChildren<Camera>();
@@ -46,7 +49,7 @@ public class ComputerController : MonoBehaviour
     public void Update()
     {
         // If active, check for interact key to disengage (ignored while typing in a text box - Adam)
-        if (isActive && !TextInputGuard.IsTyping && Keyboard.current.eKey.wasPressedThisFrame)
+        if (isActive && Time.frameCount > openedFrame && !TextInputGuard.IsTyping && Keyboard.current.eKey.wasPressedThisFrame)
             DisengageInteract();
     }
 

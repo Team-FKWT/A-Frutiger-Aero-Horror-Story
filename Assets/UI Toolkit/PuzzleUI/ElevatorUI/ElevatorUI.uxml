@@ -1,0 +1,50 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:ui="UnityEngine.UIElements"
+         xmlns:uie="UnityEditor.UIElements"
+         noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd"
+         editor-extension-mode="False">
+    <ui:VisualElement name="Background"
+                      style="flex-grow: 1; justify-content: center; align-items: center; background-color: rgba(0, 25, 60, 0.55);">
+        <ui:VisualElement name="Panel"
+                          style="width: 460px; padding-bottom: 26px; background-color: rgb(205, 222, 236); border-top-left-radius: 26px; border-top-right-radius: 26px; border-bottom-left-radius: 26px; border-bottom-right-radius: 26px; border-left-width: 4px; border-right-width: 4px; border-top-width: 4px; border-bottom-width: 4px; border-left-color: white; border-right-color: white; border-top-color: white; border-bottom-color: white; overflow: hidden; align-items: center;">
+            <ui:VisualElement name="TitleBar"
+                              style="width: 100%; flex-direction: row; align-items: center; justify-content: space-between; height: 56px; padding-left: 22px; padding-right: 8px; background-color: rgb(36, 112, 205);">
+                <ui:Label text="Müllerin Life Sciences: Elevator"
+                          style="color: white; font-size: 22px; -unity-font-style: bold;" />
+                <ui:Button name="CloseButton" text="X"
+                           style="width: 44px; height: 40px; font-size: 22px; -unity-font-style: bold; color: white; background-color: rgb(210, 70, 60); border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;" />
+            </ui:VisualElement>
+
+            <ui:VisualElement name="FloorDisplay"
+                              style="margin-top: 22px; width: 180px; height: 72px; justify-content: center; align-items: center; background-color: rgb(10, 40, 40); border-top-left-radius: 12px; border-top-right-radius: 12px; border-bottom-left-radius: 12px; border-bottom-right-radius: 12px; border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; border-left-color: rgb(120, 150, 170); border-right-color: rgb(120, 150, 170); border-top-color: rgb(120, 150, 170); border-bottom-color: rgb(120, 150, 170);">
+                <ui:Label name="FloorDisplayText" text="2"
+                          style="font-size: 44px; -unity-font-style: bold; color: rgb(90, 240, 200);" />
+            </ui:VisualElement>
+
+            <ui:VisualElement name="Floor1Row" style="flex-direction: row; align-items: center; width: 380px; margin-top: 24px;">
+                <ui:Button name="Floor1Button" text="1"
+                           style="width: 76px; height: 76px; font-size: 30px; -unity-font-style: bold; color: rgb(20, 60, 110); background-color: rgb(235, 245, 255); border-top-left-radius: 38px; border-top-right-radius: 38px; border-bottom-left-radius: 38px; border-bottom-right-radius: 38px; border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; border-left-color: rgb(120, 180, 235); border-right-color: rgb(120, 180, 235); border-top-color: rgb(120, 180, 235); border-bottom-color: rgb(120, 180, 235);" />
+                <ui:Label text="Sleep Clinic and Reception" style="margin-left: 18px; font-size: 20px; color: rgb(20, 60, 110);" />
+            </ui:VisualElement>
+
+            <ui:VisualElement name="Floor2Row" style="flex-direction: row; align-items: center; width: 380px; margin-top: 14px;">
+                <ui:Button name="Floor2Button" text="2"
+                           style="width: 76px; height: 76px; font-size: 30px; -unity-font-style: bold; color: white; background-color: rgb(60, 160, 80); border-top-left-radius: 38px; border-top-right-radius: 38px; border-bottom-left-radius: 38px; border-bottom-right-radius: 38px; border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; border-left-color: white; border-right-color: white; border-top-color: white; border-bottom-color: white;" />
+                <ui:Label text="Offices (you are here)" style="margin-left: 18px; font-size: 20px; -unity-font-style: bold; color: rgb(20, 60, 110);" />
+            </ui:VisualElement>
+
+            <ui:VisualElement name="FloorB1Row" style="flex-direction: row; align-items: center; width: 380px; margin-top: 14px;">
+                <ui:Button name="FloorB1Button" text="B1"
+                           style="width: 76px; height: 76px; font-size: 28px; -unity-font-style: bold; color: rgb(20, 60, 110); background-color: rgb(235, 245, 255); border-top-left-radius: 38px; border-top-right-radius: 38px; border-bottom-left-radius: 38px; border-bottom-right-radius: 38px; border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; border-left-color: rgb(120, 180, 235); border-right-color: rgb(120, 180, 235); border-top-color: rgb(120, 180, 235); border-bottom-color: rgb(120, 180, 235);" />
+                <ui:VisualElement style="margin-left: 18px;">
+                    <ui:Label text="Research Laboratory" style="font-size: 20px; color: rgb(20, 60, 110);" />
+                    <ui:Label name="B1LockLabel" text="LOCKED: Authorized personnel only"
+                              style="font-size: 16px; -unity-font-style: bold; color: rgb(190, 50, 40);" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <ui:Label name="StatusText" text="Select a floor."
+                      style="margin-top: 22px; width: 400px; font-size: 18px; color: rgb(40, 70, 110); white-space: normal; -unity-text-align: middle-center;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
