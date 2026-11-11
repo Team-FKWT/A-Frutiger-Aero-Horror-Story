@@ -20,8 +20,14 @@ MonoBehaviour:
     rid: 4786509958496124928
   m_ActivePlatformGuid: 
   m_AdditionalPlatformBuildSettings: []
-  m_OverrideGlobalSceneList: 0
-  m_Scenes: []
+  m_OverrideGlobalSceneList: 1
+  m_Scenes:
+  - m_enabled: 1
+    m_path: Assets/Scenes/IntroScreen.unity
+    m_guid: c40637f7795df485996fb522537b212a
+  - m_enabled: 1
+    m_path: Assets/Scenes/S2_Office.unity
+    m_guid: a47214142ee763d408769e7b0b817a45
   m_HasScriptingDefines: 0
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
