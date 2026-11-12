@@ -42,6 +42,7 @@ public class LoginUIController : MonoBehaviour
     private VisualElement desktop;
     private Label desktopMessage;
     private Button desktopCloseButton;
+    private bool viewOpen;
 
     private void Awake() => GetComponent<PanelRenderer>().RegisterUIReloadCallback(OnUIReload);
 
@@ -116,12 +117,21 @@ public class LoginUIController : MonoBehaviour
     // Sent by the ComputerController when the player sits down at the computer.
     private void OnViewOpened()
     {
-        if (passwordField != null && !IsSolved()) passwordField.Focus();
+        viewOpen = true;
+        if (passwordField == null || IsSolved()) return;
+        // Wait a moment before focusing, so the E that opened the computer isn't typed into the box.
+        passwordField.schedule.Execute(() =>
+        {
+            if (!viewOpen || IsSolved()) return; // the player already left
+            passwordField.value = "";
+            passwordField.Focus();
+        }).StartingIn(150);
     }
 
     // Sent by the ComputerController when the player leaves, so walking keys don't type into the box.
     private void OnViewClosed()
     {
+        viewOpen = false;
         if (passwordField != null) passwordField.Blur();
         TextInputGuard.SetTyping(false);
     }

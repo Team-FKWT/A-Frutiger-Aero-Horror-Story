@@ -1,12 +1,14 @@
 using UnityEngine;
 
-/// Sets how many pills the player has in this segment and shows the count on
-/// screen. Put one on the GameManager in each playable segment scene. The number
-/// is set here, not on ProgressionState, because the ProgressionState from the
-/// menu is the one that stays alive when the player starts from a build.
+/// Shows the player's pill count on screen. The count itself lives in ProgressionState,
+/// which survives scene loads, so pills carry over from segment to segment. Pills are
+/// gained by picking things up (e.g. a PuzzlePickup with Pills Given set).
+/// Put one on the GameManager in each playable segment scene.
 public class SegmentPills : MonoBehaviour
 {
-    [Tooltip("How many pills the player has when this segment starts or reloads.")]
+    [Tooltip("Testing only: set the pill count to Starting Pills whenever this scene loads. Leave off for normal play, so pills carry over.")]
+    [SerializeField] private bool resetPillsOnStart = false;
+    [Tooltip("Used only when Reset Pills On Start is ticked.")]
     [SerializeField, Min(0)] private int startingPills = 5;
 
     private const float LabelWidth = 200f, LabelHeight = 44f, Margin = 24f;
@@ -23,7 +25,7 @@ public class SegmentPills : MonoBehaviour
             enabled = false;
             return;
         }
-        state.SetPills(startingPills);
+        if (resetPillsOnStart) state.SetPills(startingPills);
     }
 
     // Placeholder display in the bottom right corner until the real HUD is built.

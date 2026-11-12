@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/S1_Clinic.unity
     guid: 64d080e69e7e33b46ab2ff7b3b6cf625
   - enabled: 1
+    path: Assets/Scenes/S2_Office.unity
+    guid: a47214142ee763d408769e7b0b817a45
+  - enabled: 1
+    path: Assets/Scenes/S3_Lab.unity
+    guid: f912eb19dcdf4df4dadc6bfbdee1aecf
+  - enabled: 1
     path: Assets/Scenes/DemoPlatforming.unity
     guid: 0fc365afe8d584a4387a1d14c3b3fc3c
   - enabled: 1
