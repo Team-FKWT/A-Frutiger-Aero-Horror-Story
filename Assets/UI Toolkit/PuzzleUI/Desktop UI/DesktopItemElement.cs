@@ -30,7 +30,7 @@ public partial class DesktopItemElement: VisualElement
             var desktopWindow = windowContainer.Q<DesktopWindowElement>();
             contentArea.Add(desktopWindow);
             // Instantiate window with provided contents
-            desktopWindow.Init(label, contents);
+            desktopWindow.Init(label, contents, Length.Percent(70), Length.Percent(50), Length.Percent(20), Length.Percent(15), true);
         };
     }
 
