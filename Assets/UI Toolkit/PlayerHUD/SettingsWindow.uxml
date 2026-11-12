@@ -1,0 +1,8 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="WindowContents" style="flex-grow: 0; width: 100%; background-color: rgb(231, 231, 231); height: 100%; justify-content: space-between;">
+        <ui:Slider label="Field of View" value="60" high-value="90" name="FOVSlider" low-value="45" fill="false" show-input-field="true"/>
+        <ui:Slider label="Mouse Sensitivity" value="50" high-value="100" name="SensitivitySlider" show-input-field="true"/>
+        <ui:Slider label="Volume" value="50" high-value="100" name="VolumeSlider" show-input-field="true"/>
+        <ui:Button text="Apply" name="ApplyButton" style="margin-bottom: 2%; margin-left: auto; margin-right: auto; flex-shrink: 1; padding-left: 10%; padding-right: 10%;"/>
+    </ui:VisualElement>
+</ui:UXML>
