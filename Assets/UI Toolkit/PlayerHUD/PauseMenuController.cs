@@ -75,9 +75,25 @@ public class PauseMenuController : MonoBehaviour
             // Open popup window with settings
             var windowInstance = windowTemplate.Instantiate();
             var window = windowInstance.Q<DesktopWindowElement>();
+            
             // Set size and position of window
             root.Add(window);
             window.Init("Settings", settingsWindowTemplate, Length.Percent(50), Length.Percent(40), Length.Percent(20), Length.Percent(20), true);
+            
+            Slider fovSlider = root.Q<Slider>("FOVSlider");
+            Slider sensitivitySlider = root.Q<Slider>("SensitivitySlider");
+            Slider volumeSlider = root.Q<Slider>("VolumeSlider");
+            Button applyButton = root.Q<Button>("ApplyButton");
+            applyButton.clicked += () =>
+            {
+                movementController.camera.fieldOfView = fovSlider.value;
+                mouseController.sensitivity = sensitivitySlider.value;
+                // TODO: add volume control
+            };
+            // Set sliders to current values
+            fovSlider.value = movementController.camera.fieldOfView;
+            sensitivitySlider.value = mouseController.sensitivity;
+            // TODO: add volume persistence
         };
         controlsButton.clicked += () =>
         {
