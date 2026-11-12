@@ -46,7 +46,12 @@ public class AudioTestPanel : MonoBehaviour
 
     private void Update()
     {
-        if (Keyboard.current != null && Keyboard.current.f8Key.wasPressedThisFrame)
+        if (Keyboard.current == null || !Keyboard.current.f8Key.wasPressedThisFrame ||
+            TextInputGuard.IsTyping)
+            return;
+
+        bool paused = player != null && player.pausePanel != null && player.pausePanel.activeSelf;
+        if (editing || player == null || player.enabled || paused)
             SetEditing(!editing);
     }
 

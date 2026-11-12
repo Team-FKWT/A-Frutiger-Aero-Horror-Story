@@ -1122,6 +1122,7 @@ GameObject:
   - component: {fileID: 308637633}
   - component: {fileID: 308637635}
   - component: {fileID: 308637634}
+  - component: {fileID: 9202863001}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1218,9 +1219,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 308637628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdbe6771bea223f4f968a86722181fc8, type: 3}
+  m_Script: {fileID: 11500000, guid: 85495f9801234e49b6a391d515bfac2e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PillInteractable
+  m_EditorClassIdentifier: Assembly-CSharp::EvidenceLog
+  startingEntries:
+  - {fileID: 11400000, guid: c6c7363ac3a241378bf1b9355ad64296, type: 2}
+  - {fileID: 11400000, guid: f18d1a84d6594386a71226f999239b51, type: 2}
+  pillBottleEntry: {fileID: 11400000, guid: 93b9c4b209fa4711b4853a01579532fb, type: 2}
+  pillBottlePuzzleId: S1_PillBottle
 --- !u!114 &308637635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4854,6 +4860,7 @@ GameObject:
   - component: {fileID: 1549655693}
   - component: {fileID: 1549655692}
   - component: {fileID: 1549655691}
+  - component: {fileID: 1549655694}
   m_Layer: 6
   m_Name: PillBottle
   m_TagString: Untagged
@@ -22555,6 +22562,36 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &9202863001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308637628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c05e47ff83ce4ad88546c8204c846f76, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::EvidenceLogUI
+  log: {fileID: 308637634}
+  player: {fileID: 1086341975}
+--- !u!114 &1549655694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549655689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6605a9931bfded4887f5f5517e7ebc5, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzlePickup
+  puzzleId: S1_PillBottle
+  pillsGiven: 10
+  puzzleActor: {fileID: 0}
+  pickupMessage: "Picked up: Hypnosom (10 doses).\nEvidence recorded. Press J to open the log."
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
