@@ -1,39 +1,64 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-/// Elevator floor panel. Opened with E through an InteractiveViewController on the
-/// elevator (same setup as the keycard reader). Floor B1 uses a SegmentExit: it shows
-/// as locked until the exit's required puzzles are solved, and once unlocked it takes
-/// the player to the next segment. The lock state refreshes whenever the panel opens
-/// and whenever a puzzle is solved. Put this on the object with the PanelRenderer.
+/// Elevator floor panel, reused on every floor. Opened with E through an
+/// InteractiveViewController on the elevator (same setup as the keycard reader).
+/// Set Current Floor for the scene it's in. Each floor button can have a SegmentExit:
+/// that floor shows as locked until the exit's required puzzles are solved, and once
+/// unlocked it takes the player there. A floor with no exit just shows a message.
+/// The labels refresh whenever the panel opens and whenever a puzzle is solved.
+/// Put this on the object with the PanelRenderer.
 public class ElevatorPanelController : MonoBehaviour
 {
+    public enum Floor { One, Two, B1 }
+
+    [Header("This elevator")]
+    [Tooltip("The floor this scene is on. Its button shows as 'you are here'.")]
+    [SerializeField] private Floor currentFloor = Floor.Two;
+
+    [Header("Exits (leave empty for floors you can't go to from here)")]
+    [SerializeField] private SegmentExit floor1Exit;
+    [SerializeField] private SegmentExit floor2Exit;
+    [SerializeField] private SegmentExit floorB1Exit;
+
+    [Header("Floors that are always locked from here (no exit, shown as LOCKED)")]
+    [SerializeField] private bool floor1AlwaysLocked;
+    [SerializeField] private bool floor2AlwaysLocked;
+    [SerializeField] private bool floorB1AlwaysLocked;
+
     [Header("Links")]
-    [Tooltip("The SegmentExit that the B1 button uses.")]
-    [SerializeField] private SegmentExit downExit;
     [Tooltip("The InteractiveViewController on the elevator. The X button closes the panel.")]
     [SerializeField] private MonoBehaviour viewController;
+
+    [Header("Floor names")]
+    [SerializeField] private string floor1Name = "Sleep Clinic and Reception";
+    [SerializeField] private string floor2Name = "Offices";
+    [SerializeField] private string floorB1Name = "Research Laboratory";
 
     [Header("Text")]
     [SerializeField] private string lockedLabel = "LOCKED: Authorized personnel only";
     [SerializeField] private string unlockedLabel = "Clearance accepted";
-    [SerializeField, TextArea] private string floor1Message = "No reason to go back down there now.";
+    [SerializeField, TextArea] private string noExitMessage = "No reason to go back there now.";
     [SerializeField, TextArea] private string currentFloorMessage = "You're already on this floor.";
 
     private PanelRenderer panel;
     private bool wasShowing;
     private bool subscribed;
 
-    private Button floor1Button;
-    private Button floor2Button;
-    private Button floorB1Button;
+    private readonly Button[] buttons = new Button[3];
+    private readonly Label[] descs = new Label[3];
+    private readonly Label[] locks = new Label[3];
     private Button closeButton;
-    private Label b1LockLabel;
+    private Label floorDisplay;
     private Label statusText;
 
+    private static readonly string[] Keys = { "1", "2", "B1" };
+    private static readonly int[] Heights = { 1, 2, -1 }; // for "going up" vs "going down"
     private static readonly Color Normal = new Color(0.16f, 0.27f, 0.43f);
     private static readonly Color Bad = new Color(0.75f, 0.2f, 0.15f);
     private static readonly Color Good = new Color(0.1f, 0.5f, 0.25f);
+    private static readonly Color CurrentFill = new Color(0.24f, 0.63f, 0.31f);
+    private static readonly Color OtherFill = new Color(0.92f, 0.96f, 1f);
 
     private void Awake()
     {
@@ -43,7 +68,7 @@ public class ElevatorPanelController : MonoBehaviour
 
     private void Start()
     {
-        // Refresh the lock label the moment any puzzle is solved.
+        // Refresh the lock labels the moment any puzzle is solved.
         if (ProgressionState.Instance != null)
         {
             ProgressionState.Instance.PuzzleSolved += OnPuzzleSolved;
@@ -68,65 +93,95 @@ public class ElevatorPanelController : MonoBehaviour
 
     private void OnPuzzleSolved(string puzzleId) => Refresh();
 
+    private SegmentExit ExitFor(int i) => i == 0 ? floor1Exit : i == 1 ? floor2Exit : floorB1Exit;
+
+    private bool AlwaysLocked(int i) => i == 0 ? floor1AlwaysLocked : i == 1 ? floor2AlwaysLocked : floorB1AlwaysLocked;
+
+    private string NameFor(int i) => i == 0 ? floor1Name : i == 1 ? floor2Name : floorB1Name;
+
     private void OnUIReload(PanelRenderer panelRenderer, VisualElement root, int version)
     {
-        if (floor1Button != null) floor1Button.clicked -= OnFloor1;
-        if (floor2Button != null) floor2Button.clicked -= OnFloor2;
-        if (floorB1Button != null) floorB1Button.clicked -= OnFloorB1;
-        if (closeButton != null) closeButton.clicked -= Close;
-
-        floor1Button = root.Q<Button>("Floor1Button");
-        floor2Button = root.Q<Button>("Floor2Button");
-        floorB1Button = root.Q<Button>("FloorB1Button");
-        closeButton = root.Q<Button>("CloseButton");
-        b1LockLabel = root.Q<Label>("B1LockLabel");
-        statusText = root.Q<Label>("StatusText");
-
         string missing = "";
-        if (floor1Button == null) missing += " Floor1Button";
-        if (floor2Button == null) missing += " Floor2Button";
-        if (floorB1Button == null) missing += " FloorB1Button";
+        for (int i = 0; i < 3; i++)
+        {
+            int index = i; // copy for the button action below
+            buttons[i] = root.Q<Button>($"Floor{Keys[i]}Button");
+            descs[i] = root.Q<Label>($"Floor{Keys[i]}Desc");
+            locks[i] = root.Q<Label>($"Floor{Keys[i]}Lock");
+            if (buttons[i] == null || descs[i] == null || locks[i] == null) { missing += $" Floor{Keys[i]}"; continue; }
+            // Assigning a new Clickable replaces any old action, so reloads never double up.
+            buttons[i].clickable = new Clickable(() => OnFloorPressed(index));
+        }
+        closeButton = root.Q<Button>("CloseButton");
+        floorDisplay = root.Q<Label>("FloorDisplayText");
+        statusText = root.Q<Label>("StatusText");
         if (closeButton == null) missing += " CloseButton";
-        if (b1LockLabel == null) missing += " B1LockLabel";
+        if (floorDisplay == null) missing += " FloorDisplayText";
         if (statusText == null) missing += " StatusText";
         if (missing.Length > 0)
         {
             Debug.LogError("ElevatorPanelController: ElevatorUI.uxml is missing:" + missing, this);
             return;
         }
-
-        floor1Button.clicked += OnFloor1;
-        floor2Button.clicked += OnFloor2;
-        floorB1Button.clicked += OnFloorB1;
-        closeButton.clicked += Close;
+        closeButton.clickable = new Clickable(Close);
         Refresh();
     }
 
     private void Refresh()
     {
-        if (b1LockLabel == null || statusText == null) return;
-        bool unlocked = downExit != null && downExit.IsUnlocked;
-        b1LockLabel.text = unlocked ? unlockedLabel : lockedLabel;
-        b1LockLabel.style.color = unlocked ? Good : Bad;
+        if (statusText == null) return;
+        floorDisplay.text = Keys[(int)currentFloor];
+        for (int i = 0; i < 3; i++)
+        {
+            if (buttons[i] == null) continue;
+            bool here = i == (int)currentFloor;
+            descs[i].text = NameFor(i) + (here ? " (you are here)" : "");
+            descs[i].style.unityFontStyleAndWeight = here ? FontStyle.Bold : FontStyle.Normal;
+            buttons[i].style.backgroundColor = here ? CurrentFill : OtherFill;
+            buttons[i].style.color = here ? Color.white : Normal;
+
+            SegmentExit exit = ExitFor(i);
+            if (here)
+            {
+                locks[i].text = "";
+            }
+            else if (exit == null)
+            {
+                // No way there from here: optionally show it as locked.
+                locks[i].text = AlwaysLocked(i) ? lockedLabel : "";
+                locks[i].style.color = Bad;
+            }
+            else if (!exit.HasRequirements)
+            {
+                locks[i].text = ""; // open floor, nothing to unlock
+            }
+            else
+            {
+                bool unlocked = exit.IsUnlocked;
+                locks[i].text = unlocked ? unlockedLabel : lockedLabel;
+                locks[i].style.color = unlocked ? Good : Bad;
+            }
+        }
         SetStatus("Select a floor.", Normal);
     }
 
-    private void OnFloor1() => SetStatus(floor1Message, Normal);
-
-    private void OnFloor2() => SetStatus(currentFloorMessage, Normal);
-
-    private void OnFloorB1()
+    private void OnFloorPressed(int i)
     {
-        if (downExit == null)
+        if (i == (int)currentFloor) { SetStatus(currentFloorMessage, Normal); return; }
+
+        SegmentExit exit = ExitFor(i);
+        if (exit == null)
         {
-            Debug.LogError("ElevatorPanelController: no SegmentExit linked for B1.", this);
+            if (AlwaysLocked(i)) SetStatus(lockedLabel, Bad);
+            else SetStatus(noExitMessage, Normal);
             return;
         }
-        if (downExit.CanUse(out string message))
+
+        if (exit.CanUse(out string message))
         {
-            SetStatus("Going down...", Good);
+            SetStatus(Heights[i] > Heights[(int)currentFloor] ? "Going up..." : "Going down...", Good);
             Close();          // give the player their controls and cursor back first
-            downExit.Go();
+            exit.Go();
         }
         else
         {

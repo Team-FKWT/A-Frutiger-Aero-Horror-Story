@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -48,8 +49,10 @@ public class ComputerController : MonoBehaviour
 
     public void Update()
     {
-        // If active, check for interact key to disengage (ignored while typing in a text box - Adam)
-        if (isActive && Time.frameCount > openedFrame && !TextInputGuard.IsTyping && Keyboard.current.eKey.wasPressedThisFrame)
+        // If active, Esc always closes; E closes unless the player is typing in a text box - Adam
+        if (!isActive || Time.frameCount <= openedFrame) return;
+        if (Keyboard.current.escapeKey.wasPressedThisFrame ||
+            (!TextInputGuard.IsTyping && Keyboard.current.eKey.wasPressedThisFrame))
             DisengageInteract();
     }
 
@@ -64,10 +67,17 @@ public class ComputerController : MonoBehaviour
         // Switch camera back
         closeupCamera.enabled = false;
         playerCamera.enabled = true;
-        // Reenable controllers
-        playerMovementController.enabled = true;
-        playerMouseController.enabled = true;
+        // Reenable controllers next frame, so the Esc that closed this doesn't also open the pause menu - Adam
+        // Runs on the player, so it still finishes if this object is hidden right after closing
+        playerMovementController.StartCoroutine(ReenableControlsNextFrame());
         // Let the screen know the player left (e.g. a login box gives up keyboard focus) - Adam
         BroadcastMessage("OnViewClosed", SendMessageOptions.DontRequireReceiver);
+    }
+
+    private IEnumerator ReenableControlsNextFrame()
+    {
+        yield return null;
+        playerMovementController.enabled = true;
+        playerMouseController.enabled = true;
     }
 }

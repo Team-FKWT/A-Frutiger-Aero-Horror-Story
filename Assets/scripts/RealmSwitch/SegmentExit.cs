@@ -35,6 +35,9 @@ public class SegmentExit : MonoBehaviour
 
     private bool leaving;
 
+    /// True if this exit has any required puzzles at all.
+    public bool HasRequirements => requiredPuzzleIds != null && requiredPuzzleIds.Count > 0;
+
     /// True once every required puzzle is solved (ignores which realm the player is in).
     public bool IsUnlocked => GetMissingRequirement() == null;
 

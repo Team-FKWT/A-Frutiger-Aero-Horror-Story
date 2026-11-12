@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -48,8 +49,10 @@ public class InteractiveViewController : MonoBehaviour
     {
         // If active, check for interact key to disengage
         // (not on the frame it opened, and not while typing in a text box - Adam)
-        if (!isActive) return;
-        if (Time.frameCount > openedFrame && !TextInputGuard.IsTyping && Keyboard.current.eKey.wasPressedThisFrame)
+        if (!isActive || Time.frameCount <= openedFrame) return;
+        // Esc always closes; E closes unless typing - Adam
+        if (Keyboard.current.escapeKey.wasPressedThisFrame ||
+            (!TextInputGuard.IsTyping && Keyboard.current.eKey.wasPressedThisFrame))
             DisengageInteract();
     }
 
@@ -62,7 +65,14 @@ public class InteractiveViewController : MonoBehaviour
         // Lock cursor again
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        // Reenable controllers
+        // Reenable controllers next frame, so the Esc that closed this doesn't also open the pause menu - Adam
+        // Runs on the player, so it still finishes if this object is hidden right after closing
+        playerMovementController.StartCoroutine(ReenableControlsNextFrame());
+    }
+
+    private IEnumerator ReenableControlsNextFrame()
+    {
+        yield return null;
         playerMovementController.enabled = true;
         playerMouseController.enabled = true;
     }
