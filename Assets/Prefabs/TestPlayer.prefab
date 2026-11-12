@@ -210,6 +210,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PauseMenuController
   loadingScreenPanel: {fileID: 4036761629890681178}
   introScene: IntroScreen
+  windowTemplate: {fileID: 9197481963319205126, guid: 81e710eac64524b6f9973849c104f14f, type: 3}
+  controlsWindowTemplate: {fileID: 9197481963319205126, guid: 2e8b28f03d17e4b1b8ab7c789425ba9f, type: 3}
+  settingsWindowTemplate: {fileID: 9197481963319205126, guid: 6dcebded9ecb84c1c9b26bcc50ae4da3, type: 3}
 --- !u!1 &4274137756233654292
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +448,7 @@ MonoBehaviour:
   interactableMask:
     serializedVersion: 2
     m_Bits: 64
-  pausePanel: {fileID: 0}
+  pausePanel: {fileID: 4230333801025627691}
   inDream: 0
 --- !u!114 &1204983691235879880
 MonoBehaviour:
