@@ -1023,6 +1023,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &252234396 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4230333801025627691, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
+  m_PrefabInstance: {fileID: 1086341972}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &255865417
 GameObject:
   m_ObjectHideFlags: 0
@@ -3097,6 +3102,10 @@ PrefabInstance:
       propertyPath: walkspeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3249285922639675987, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
+      propertyPath: pausePanel
+      value: 
+      objectReference: {fileID: 252234396}
     - target: {fileID: 3249285922639675987, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
       propertyPath: crouchSpeed
       value: 2.5

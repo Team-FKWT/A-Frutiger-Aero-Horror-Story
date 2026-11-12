@@ -1973,6 +1973,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2035492598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4230333801025627691, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
+  m_PrefabInstance: {fileID: 4131417272173964038}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2107113925
 GameObject:
   m_ObjectHideFlags: 0
@@ -2150,6 +2155,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1611793464318103846, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
+      propertyPath: windowTemplate
+      value: 
+      objectReference: {fileID: 9197481963319205126, guid: 81e710eac64524b6f9973849c104f14f, type: 3}
+    - target: {fileID: 1611793464318103846, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
+      propertyPath: controlsWindowTemplate
+      value: 
+      objectReference: {fileID: 9197481963319205126, guid: 2e8b28f03d17e4b1b8ab7c789425ba9f, type: 3}
+    - target: {fileID: 1611793464318103846, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
+      propertyPath: settingsWindowTemplate
+      value: 
+      objectReference: {fileID: 9197481963319205126, guid: 6dcebded9ecb84c1c9b26bcc50ae4da3, type: 3}
+    - target: {fileID: 3249285922639675987, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
+      propertyPath: pausePanel
+      value: 
+      objectReference: {fileID: 2035492598}
     - target: {fileID: 6947191766596646238, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
       propertyPath: m_Name
       value: Player
