@@ -622,7 +622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProgressionState
   currentRealm: 0
-  currentSegment: 3
+  currentSegment: 1
   solvedPuzzles: []
   activeSwitchPoint: {fileID: 0}
   endingStarted: 0
