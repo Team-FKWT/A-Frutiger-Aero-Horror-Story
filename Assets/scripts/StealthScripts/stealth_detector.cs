@@ -9,6 +9,9 @@ public class stealth_detector : MonoBehaviour
     public float detectionRate;
     public float detectionAmount;
     public float crouchMultiplier = 0.5f;
+    
+    public bool alertsOnlyInDreamState;
+    public bool alertsOnlyInReality;
 
     public GameObject player;
 
@@ -26,7 +29,7 @@ public class stealth_detector : MonoBehaviour
         while(true)
         {
             // this script slowly increases the detection level of the player when they are detected by the stealth detector
-            if (PlayerInRange() && HasLineOfSight())
+            if (PlayerInRange() && HasLineOfSight() && (!alertsOnlyInDreamState || playerController.inDream) && (!alertsOnlyInReality || !playerController.inDream))
             {
                 playerController.isDetected = true; // Initialize detection increment
                 if (playerController.crouching)
