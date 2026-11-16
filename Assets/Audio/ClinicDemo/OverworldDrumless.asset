@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3e4e0b743a2b1e438afbfc5f398fec7, type: 3}
+  m_Name: OverworldDrumless
+  m_EditorClassIdentifier: Assembly-CSharp::AudioCue
+  clip: {fileID: 8300000, guid: 7d470f643017ab44fb23f91a9b21fee5, type: 3}
+  output: {fileID: 7707786645432392421, guid: 34bea51644b588d488a42ac7cbc567a7, type: 2}
+  volume: 0.1

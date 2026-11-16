@@ -445,6 +445,7 @@ MonoBehaviour:
   interactableMask:
     serializedVersion: 2
     m_Bits: 64
+  pausePanel: {fileID: 0}
   inDream: 0
 --- !u!114 &1204983691235879880
 MonoBehaviour:
@@ -572,10 +573,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UniversalAudioTrigger
   audioClips:
   - {fileID: 8300000, guid: ff173dfd8ae6a923e840170d02996ca4, type: 3}
-  volume: 1
+  volume: 0.3
   minPitch: 0.95
   maxPitch: 1.05
-  isPlayerFootsteps: 0
+  isPlayerFootsteps: 1
   movementComponent: 0
   stepInterval: 0.4
   speedThreshold: 0.1

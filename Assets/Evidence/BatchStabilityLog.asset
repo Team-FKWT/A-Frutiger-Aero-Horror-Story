@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d1d80faf5840e8a74f02e1301165b1, type: 3}
+  m_Name: BatchStabilityLog
+  m_EditorClassIdentifier: Assembly-CSharp::EvidenceEntry
+  entryId: clinic.batch-stability
+  title: "Hypnosom batch stability log"
+  description: "Internal trial results for Hypnosom batches."
+  document: {fileID: 2800000, guid: 59b0f3ed704af9940aa2299bb68b0705, type: 3}
