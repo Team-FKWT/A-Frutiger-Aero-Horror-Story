@@ -361,6 +361,8 @@ GameObject:
   - component: {fileID: 1204983691235879880}
   - component: {fileID: -5476391515056543620}
   - component: {fileID: -8780214069676707010}
+  - component: {fileID: 7686163579792637763}
+  - component: {fileID: 4625833378739873827}
   m_Layer: 0
   m_Name: TestPlayer
   m_TagString: Player
@@ -377,8 +379,8 @@ Transform:
   m_GameObject: {fileID: 6947191766596646238}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 0.7, y: 1, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 932516008189837987}
@@ -406,7 +408,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 2
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -425,8 +427,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::movementController
   camera: {fileID: 304144277932748232}
-  walkspeed: 15
-  sprintSpeed: 22
+  walkspeed: 5
+  sprintSpeed: 8
   speed: 0
   gravity: 19.6
   jumpHeight: 3
@@ -439,13 +441,13 @@ MonoBehaviour:
   detectionLevel: 0
   isDetected: 0
   crouchHeight: 1
-  crouchSpeed: 6
+  crouchSpeed: 2.5
   crouchTransitionSpeed: 10
   crouching: 0
   interactableMask:
     serializedVersion: 2
     m_Bits: 64
-  pausePanel: {fileID: 0}
+  pausePanel: {fileID: 4230333801025627691}
   inDream: 0
 --- !u!114 &1204983691235879880
 MonoBehaviour:
@@ -591,6 +593,33 @@ MonoBehaviour:
   playOnKeyPress: 0
   interactionKey: 101
   requireProximityToPress: 1
+--- !u!114 &7686163579792637763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6947191766596646238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 501ca1995fbf25b499d2195a54f23a07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KeycardPuzzleState
+--- !u!114 &4625833378739873827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6947191766596646238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e18688182480246b78b11990c235e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReturnToIntro
+  introScene: IntroScreen
+  listenForKey: 1
+  menuKey: 27
 --- !u!1 &9153244619837620693
 GameObject:
   m_ObjectHideFlags: 0
