@@ -5,8 +5,14 @@ public class InteractiveDoor : MonoBehaviour
     private bool isPlayerNearby = false;
     private bool isDoorOpen = false;
     
-    private MeshRenderer doorVisual;
-    private BoxCollider doorCollider; // The single consolidated collider
+    private MeshRenderer[] doorVisuals;
+    private Collider[] allColliders;
+    private Transform playerTransform;
+
+    [Header("Interaction Settings")]
+    [Tooltip("How close the player must be to open the door.")]
+    public float interactionDistance = 3.0f;
+    public KeyCode interactKey = KeyCode.E;
 
     [Header("Audio Settings")]
     [Tooltip("Drag your door opening sound clip here.")]
@@ -15,73 +21,61 @@ public class InteractiveDoor : MonoBehaviour
     public AudioClip closeSound;
 
     private AudioSource audioSource;
-    
-    // Store original sizes to calculate open/closed state modifications
-    private Vector3 closedSize;
-    private Vector3 closedCenter;
 
     void Start()
     {
-        // Automatically set up an AudioSource component
-        audioSource = gameObject.GetComponent<AudioSource>();
+        // Set up AudioSource
+        audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
-        
         audioSource.playOnAwake = false;
 
-        // Get the visual mesh component of this door model
-        doorVisual = GetComponentInChildren<MeshRenderer>();
-        if (doorVisual == null) 
+        // Grab ALL MeshRenderers on this object and any child objects
+        doorVisuals = GetComponentsInChildren<MeshRenderer>();
+
+        // Grab ALL existing Colliders on this object and any child objects
+        allColliders = GetComponentsInChildren<Collider>();
+
+        // If the door model didn't come with a collider at all, create one automatically
+        if (allColliders.Length == 0)
         {
-            Debug.LogError("InteractiveDoor: No MeshRenderer found in children! Please attach one.");
-            return; 
+            BoxCollider newCol = gameObject.AddComponent<BoxCollider>();
+            allColliders = new Collider[] { newCol };
         }
 
-        // Measure the child model's exact bounds
-        Bounds bounds = doorVisual.bounds;
-        Vector3 parentLocalSize = transform.InverseTransformVector(bounds.size);
-
-        // Create our SINGLE BoxCollider. It starts as a solid blocking wall.
-        doorCollider = gameObject.AddComponent<BoxCollider>();
-        doorCollider.size = new Vector3(parentLocalSize.x, parentLocalSize.y, parentLocalSize.z);
-        doorCollider.center = Vector3.zero;
-        doorCollider.isTrigger = false; // Solid physics block when closed
-
-        // Cache the closed dimensions for resetting later
-        closedSize = doorCollider.size;
-        closedCenter = doorCollider.center;
+        // Cache the player once at Start for better performance
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerTransform = player.transform;
+        }
+        else
+        {
+            Debug.LogWarning("InteractiveDoor: No object with the 'Player' tag was found in the scene!");
+        }
     }
 
     void Update()
     {
-        // Because the collider is solid when closed, we use a small distance or overlap check 
-        // to see if the player is standing in front of the door since OnTriggerEnter won't fire for solid objects.
-        CheckPlayerProximity();
+        if (playerTransform == null) return;
 
-        if (isPlayerNearby && Input.GetKeyDown(KeyCode.E))
+        // Check distance between player and door
+        float distance = Vector3.Distance(transform.position, playerTransform.position);
+        isPlayerNearby = (distance <= interactionDistance);
+
+        if (isPlayerNearby && Input.GetKeyDown(interactKey))
         {
             ToggleDoor();
         }
     }
 
-    void CheckPlayerProximity()
-    {
-        // Quick distance check from the door to find the player
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player == null) return;
-
-        // If player is within 2.5 units of the door center, they are nearby
-        float distance = Vector3.Distance(transform.position, player.transform.position);
-        isPlayerNearby = (distance <= 2.5f);
-    }
-
     void ToggleDoor()
     {
-        isDoorOpen = !isDoorOpen; 
+        isDoorOpen = !isDoorOpen;
 
-        // Play audio safely
+        // Play open/close sound
         if (isDoorOpen && openSound != null)
         {
             audioSource.PlayOneShot(openSound);
@@ -91,31 +85,22 @@ public class InteractiveDoor : MonoBehaviour
             audioSource.PlayOneShot(closeSound);
         }
 
-        // Toggle visual rendering of the door mesh
-        if (doorVisual != null) doorVisual.enabled = !isDoorOpen;
-
-        // Update the single collider shape so it doesn't block the hallway
-        UpdateColliderShape();
-    }
-
-    void UpdateColliderShape()
-    {
-        if (doorCollider == null) return;
-
-        if (isDoorOpen)
+        // Hide the door meshes when open, show them when closed
+        foreach (MeshRenderer renderer in doorVisuals)
         {
-            // WHEN OPEN: Shrink the collider to just one of the frame edges (the "hinge" wall side)
-            // This leaves the doorway completely hollow so you can walk right through.
-            doorCollider.size = new Vector3(closedSize.x * 0.1f, closedSize.y, closedSize.z);
-            doorCollider.center = new Vector3(-closedSize.x * 0.45f, closedCenter.y, closedCenter.z);
-            doorCollider.isTrigger = false; // Keeps the frame edge solid, but clears the walkway
+            if (renderer != null)
+            {
+                renderer.enabled = !isDoorOpen;
+            }
         }
-        else
+
+        // Disable the colliders completely when open so you can walk right through
+        foreach (Collider col in allColliders)
         {
-            // WHEN CLOSED: Reset back to a full solid wall covering the entire gap
-            doorCollider.size = closedSize;
-            doorCollider.center = closedCenter;
-            doorCollider.isTrigger = false;
+            if (col != null)
+            {
+                col.enabled = !isDoorOpen;
+            }
         }
     }
 }
