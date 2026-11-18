@@ -49,8 +49,9 @@ public class movementController : MonoBehaviour
 
     public GameObject pausePanel;
 
-    public bool inDream = ProgressionState.Instance != null && ProgressionState.Instance.CurrentRealm == Realm.Dream;
     //check if in dream or not, changes ur moveset
+    // this is a property (not a field) so it re-checks the current realm every time it's read
+    public bool inDream => ProgressionState.Instance != null && ProgressionState.Instance.CurrentRealm == Realm.Dream;
 
     void Awake()
     {
