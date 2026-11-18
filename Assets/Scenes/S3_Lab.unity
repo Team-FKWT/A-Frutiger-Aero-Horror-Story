@@ -2651,6 +2651,7 @@ GameObject:
   - component: {fileID: 1854174281}
   - component: {fileID: 1854174280}
   - component: {fileID: 1854174285}
+  - component: {fileID: 1854174286}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2752,6 +2753,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlaceholderEndingScreen
   exposeTheTruthText: You upload the corporate evidence. The company's stock crashes, its experiments are revealed to the public, and you face the dystopian world outside.
   remainIgnorantText: You keep quiet. They catch you snooping and pay you to stay silent... and later make sure you stay that way.
+--- !u!114 &1854174286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854174279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0fc96b38aaa4b34db02ea874ac8fbf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SwitchTransitionFeedback
+  duration: 1.1
+  screenWashOpacity: 0.35
+  dreamTransitionSound: {fileID: 8300000, guid: 1ffbc51722833cc4db608a2f2d3d8e04, type: 3}
+  realityTransitionSound: {fileID: 8300000, guid: a8154de25906ea34691186d37c3229e2, type: 3}
+  volume: 0.65
 --- !u!1001 &1903446616
 PrefabInstance:
   m_ObjectHideFlags: 0

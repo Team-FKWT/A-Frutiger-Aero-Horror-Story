@@ -694,7 +694,7 @@ MonoBehaviour:
   switchPoint: {fileID: 396095880}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   unlockedColor: {r: 0, g: 1, b: 0, a: 1}
-  unlockSound: {fileID: 0}
+  unlockSound: {fileID: 8300000, guid: c05d543283f915e489f14841a21ddd53, type: 3}
   volume: 0.7
 --- !u!23 &107468098
 MeshRenderer:
@@ -4436,7 +4436,7 @@ MonoBehaviour:
   switchPoint: {fileID: 1030884294}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   unlockedColor: {r: 0, g: 1, b: 0, a: 1}
-  unlockSound: {fileID: 0}
+  unlockSound: {fileID: 8300000, guid: c05d543283f915e489f14841a21ddd53, type: 3}
   volume: 0.7
 --- !u!23 &1868165735
 MeshRenderer:
