@@ -26,8 +26,14 @@ MonoBehaviour:
     m_path: Assets/Scenes/IntroScreen.unity
     m_guid: c40637f7795df485996fb522537b212a
   - m_enabled: 1
+    m_path: Assets/Scenes/S1_Clinic.unity
+    m_guid: 01b48d4e7759fd76d8d9e776e72d806a
+  - m_enabled: 1
     m_path: Assets/Scenes/S2_Office.unity
     m_guid: a47214142ee763d408769e7b0b817a45
+  - m_enabled: 1
+    m_path: Assets/Scenes/S3_Lab.unity
+    m_guid: f912eb19dcdf4df4dadc6bfbdee1aecf
   m_HasScriptingDefines: 0
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:

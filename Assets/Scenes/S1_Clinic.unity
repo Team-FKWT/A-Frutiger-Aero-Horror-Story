@@ -15720,6 +15720,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5867957586807155087, guid: 448af835c8c41644cbd38b5bbda86d9d, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1086341973}
+    - target: {fileID: 5867957586807155087, guid: 448af835c8c41644cbd38b5bbda86d9d, type: 3}
       propertyPath: detectionRate
       value: 1
       objectReference: {fileID: 0}
