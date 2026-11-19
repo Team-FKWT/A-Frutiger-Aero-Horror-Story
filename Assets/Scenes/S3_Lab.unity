@@ -1198,19 +1198,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 130645710193063266, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
       propertyPath: player
-      value:
+      value: 
       objectReference: {fileID: 1903446617}
     - target: {fileID: 2950499118711411555, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
       propertyPath: player
-      value:
+      value: 
       objectReference: {fileID: 1903446617}
     - target: {fileID: 4404778229258381050, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
       propertyPath: player
-      value:
+      value: 
       objectReference: {fileID: 1903446617}
     - target: {fileID: 6327748753493761041, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
       propertyPath: OutputAudioMixerGroup
-      value:
+      value: 
       objectReference: {fileID: 136189029682521636, guid: 34bea51644b588d488a42ac7cbc567a7, type: 2}
     - target: {fileID: 7056686328576368171, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1270,7 +1270,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85495f9801234e49b6a391d515bfac2e, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EvidenceLog
 --- !u!1001 &1180767408
 PrefabInstance:
@@ -2307,6 +2307,69 @@ Transform:
   - {fileID: 1853829414}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 25.477, z: 0}
+--- !u!1 &1811204303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1811204306}
+  - component: {fileID: 1811204305}
+  - component: {fileID: 1811204304}
+  m_Layer: 0
+  m_Name: DreamGrading
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1811204304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811204303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d64fbf447fc1f69439c0370d866e004f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DreamGrading
+  fadeTime: 0.6
+--- !u!114 &1811204305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811204303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 10
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 47247e46e6a04b644abbf93860958a04, type: 2}
+--- !u!4 &1811204306
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811204303}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.356504, y: -48.538486, z: -69.89081}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1823433537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2732,7 +2795,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7fac1e19782c3c4293325160ff9b0a8, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EvidenceInteraction
   log: {fileID: 983126917}
   entry: {fileID: 11400000, guid: c6c7363ac3a241378bf1b9355ad64296, type: 2}
@@ -2751,6 +2814,7 @@ GameObject:
   - component: {fileID: 1854174280}
   - component: {fileID: 1854174285}
   - component: {fileID: 1854174286}
+  - component: {fileID: 1854174287}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2850,8 +2914,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14a1e29934827f84697476d03e45f51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlaceholderEndingScreen
-  exposeTheTruthText: You upload the corporate evidence. The company's stock crashes, its experiments are revealed to the public, and you face the dystopian world outside.
-  remainIgnorantText: You keep quiet. They catch you snooping and pay you to stay silent... and later make sure you stay that way.
+  escapeText: "You shut down the data center and walk out through the emergency exit with the evidence. You know the truth about Hypnosom now, and M\xFCllerin knows you know."
+  complyText: You disable the exit lock and wait. They said you weren't in trouble. They just wanted to talk.
 --- !u!114 &1854174286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2869,6 +2933,37 @@ MonoBehaviour:
   dreamTransitionSound: {fileID: 8300000, guid: 1ffbc51722833cc4db608a2f2d3d8e04, type: 3}
   realityTransitionSound: {fileID: 8300000, guid: a8154de25906ea34691186d37c3229e2, type: 3}
   volume: 0.881
+--- !u!114 &1854174287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854174279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad0c470ea20303479bce45bfc6838e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnlockPrompts
+  prompts:
+  - puzzleId: S1_PillBottle
+    message: Press Q at a glowing switch point to take a pill and enter the Dream.
+    delay: 4
+    duration: 4
+  - puzzleId: S1_Keycards
+    message: You hear a door unlock. A new switch point is open.
+    delay: 0
+    duration: 4
+  - puzzleId: S2_Login
+    message: Login accepted. A switch point on this floor is now open.
+    delay: 0
+    duration: 4
+  - puzzleId: S3_Lock
+    message: A switch point in the lab is now open.
+    delay: 3.5
+    duration: 4
+  firstDreamMessage: 'In the Dream you can double jump: press Space twice.'
+  firstDreamDelay: 1.5
 --- !u!1001 &1903446616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2883,7 +2978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5476391515056543620, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
       propertyPath: OutputAudioMixerGroup
-      value:
+      value: 
       objectReference: {fileID: 136189029682521636, guid: 34bea51644b588d488a42ac7cbc567a7, type: 2}
     - target: {fileID: 1059205035229911061, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
       propertyPath: m_LocalScale.x
@@ -2967,7 +3062,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e4ac756fe3e37132a5fdaac81cbc67e, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::movementController
 --- !u!1001 &2007122465
 PrefabInstance:
@@ -234894,3 +234989,4 @@ SceneRoots:
   - {fileID: 1180767408}
   - {fileID: 1309101941}
   - {fileID: 983126916}
+  - {fileID: 1811204306}

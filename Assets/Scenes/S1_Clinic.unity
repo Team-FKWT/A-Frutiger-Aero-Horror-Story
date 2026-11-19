@@ -1531,7 +1531,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'w a s d = move | space = jump | ctrl / c = crouch | shift = sprint | e = interact | q = swap realm | j = evidence log'
+  m_text: w a s d = move | space = jump | ctrl / c = crouch | shift = sprint | e = interact | q = swap realm | j = evidence log
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3358,6 +3358,7 @@ GameObject:
   - component: {fileID: 308637635}
   - component: {fileID: 308637634}
   - component: {fileID: 308637636}
+  - component: {fileID: 308637637}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3491,6 +3492,37 @@ MonoBehaviour:
   - {fileID: 865248048}
   objectsToHide:
   - {fileID: 709667651}
+--- !u!114 &308637637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308637628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad0c470ea20303479bce45bfc6838e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnlockPrompts
+  prompts:
+  - puzzleId: S1_PillBottle
+    message: Press Q at a glowing switch point to take a pill and enter the Dream.
+    delay: 4
+    duration: 4
+  - puzzleId: S1_Keycards
+    message: You hear a door unlock. A new switch point is open.
+    delay: 0
+    duration: 4
+  - puzzleId: S2_Login
+    message: Login accepted. A switch point on this floor is now open.
+    delay: 0
+    duration: 4
+  - puzzleId: S3_Lock
+    message: A switch point in the lab is now open.
+    delay: 3.5
+    duration: 4
+  firstDreamMessage: 'In the Dream you can double jump: press Space twice.'
+  firstDreamDelay: 1.5
 --- !u!1 &317362383 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5650741348062542629, guid: 9669104e6210d8e41b67293210c7c563, type: 3}
@@ -5731,23 +5763,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 130645710193063266, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
       propertyPath: player
-      value:
+      value: 
       objectReference: {fileID: 1086341975}
     - target: {fileID: 2950499118711411555, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
       propertyPath: player
-      value:
+      value: 
       objectReference: {fileID: 1086341975}
     - target: {fileID: 4404778229258381050, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
       propertyPath: player
-      value:
+      value: 
       objectReference: {fileID: 1086341975}
     - target: {fileID: 4404778229258381050, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
       propertyPath: spatialPreview
-      value:
+      value: 
       objectReference: {fileID: 1536556200}
     - target: {fileID: 6327748753493761041, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
       propertyPath: OutputAudioMixerGroup
-      value:
+      value: 
       objectReference: {fileID: 136189029682521636, guid: 34bea51644b588d488a42ac7cbc567a7, type: 2}
     - target: {fileID: 7056686328576368171, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8340,7 +8372,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f832d303b29f49bbbf21d3acc33948f, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorController
   isLocked: 1
   isOpen: 0
@@ -8355,7 +8387,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90a341071b813f8e0956095bf63ce219, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractiveDoor
   interactionDistance: 3
   interactKey: 101
@@ -8371,7 +8403,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8788ccf39d1ceff449b9959b1c225bff, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorAudioFeedback
 --- !u!114 &865248054
 MonoBehaviour:
@@ -8383,7 +8415,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b14838fa146ec64ca07191c67d3a6b5, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioCueEmitter
   cue: {fileID: 11400000, guid: c23d3d8c2d07c7f47ae590736c379efb, type: 2}
   spatialBlend: 1
@@ -10548,7 +10580,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5476391515056543620, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
       propertyPath: OutputAudioMixerGroup
-      value:
+      value: 
       objectReference: {fileID: 136189029682521636, guid: 34bea51644b588d488a42ac7cbc567a7, type: 2}
     - target: {fileID: 1059205035229911061, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
       propertyPath: m_LocalScale.x
@@ -10671,7 +10703,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e4ac756fe3e37132a5fdaac81cbc67e, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::movementController
 --- !u!114 &1086341976
 MonoBehaviour:
@@ -10881,6 +10913,69 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.07071045, y: 0.04242569, z: 0.042425536}
   m_Center: {x: 0, y: 0.000000059604645, z: -0.00000023841858}
+--- !u!1 &1142581492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1142581495}
+  - component: {fileID: 1142581494}
+  - component: {fileID: 1142581493}
+  m_Layer: 0
+  m_Name: DreamGrading
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1142581493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142581492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d64fbf447fc1f69439c0370d866e004f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DreamGrading
+  fadeTime: 0.6
+--- !u!114 &1142581494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142581492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 10
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 47247e46e6a04b644abbf93860958a04, type: 2}
+--- !u!4 &1142581495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142581492}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.356504, y: -48.538486, z: -69.89081}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1145479916 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3348118820787498121, guid: 9669104e6210d8e41b67293210c7c563, type: 3}
@@ -11668,7 +11763,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8788ccf39d1ceff449b9959b1c225bff, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorAudioFeedback
 --- !u!114 &1230937502
 MonoBehaviour:
@@ -11680,7 +11775,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b14838fa146ec64ca07191c67d3a6b5, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioCueEmitter
   cue: {fileID: 11400000, guid: c23d3d8c2d07c7f47ae590736c379efb, type: 2}
   spatialBlend: 1
@@ -16460,7 +16555,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b14838fa146ec64ca07191c67d3a6b5, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioCueEmitter
   cue: {fileID: 11400000, guid: c23d3d8c2d07c7f47ae590736c379efb, type: 2}
   spatialBlend: 1
@@ -16476,7 +16571,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8788ccf39d1ceff449b9959b1c225bff, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorAudioFeedback
 --- !u!1 &1541244840 stripped
 GameObject:
@@ -21844,3 +21939,4 @@ SceneRoots:
   - {fileID: 1991920466}
   - {fileID: 1763301696}
   - {fileID: 543962300}
+  - {fileID: 1142581495}
