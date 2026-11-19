@@ -102,20 +102,12 @@ public class EvidenceLogUI : MonoBehaviour
 
     private void OnGUI()
     {
-        if (log == null) return;
+        if (log == null || !isOpen) return;
         Matrix4x4 previousMatrix = GUI.matrix;
         float scale = Mathf.Max(1f, Screen.height / 720f);
         GUI.matrix = Matrix4x4.Scale(new Vector3(scale, scale, 1f));
         float screenWidth = Screen.width / scale;
         float screenHeight = Screen.height / scale;
-
-        if (!isOpen)
-        {
-            GUI.Box(new Rect(16f, screenHeight - 44f, 260f, 28f),
-                $"J: Evidence log ({log.Entries.Count} entries)");
-            GUI.matrix = previousMatrix;
-            return;
-        }
 
         InitializeStyles();
         float width = Mathf.Min(1000f, screenWidth - 32f);
@@ -169,6 +161,11 @@ public class EvidenceLogUI : MonoBehaviour
                 GUI.DrawTexture(image, entry.Document, ScaleMode.ScaleToFit, true);
             }
             GUILayout.EndScrollView();
+        }
+        else
+        {
+            GUILayout.Label("No evidence collected yet.", headingStyle);
+            GUILayout.Label("Read documents and collect items to add them to your log.", bodyStyle);
         }
         GUILayout.EndVertical();
         GUILayout.EndHorizontal();
