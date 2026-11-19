@@ -8,23 +8,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/IntroScreen.unity
     guid: c40637f7795df485996fb522537b212a
-  - enabled: 0
-    path: Assets/Scenes/old/S1_Clinic.unity
-    guid: 64d080e69e7e33b46ab2ff7b3b6cf625
-  - enabled: 0
-    path: Assets/Scenes/old/DemoPlatforming.unity
-    guid: 0fc365afe8d584a4387a1d14c3b3fc3c
-  - enabled: 0
-    path: Assets/Scenes/old/RealmSwitchTest.unity
-    guid: eebf08d15f222cf4b957f443b8a3e134
-  - enabled: 0
-    path: Assets/Scenes/old/StealthScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 0
-    path: Assets/Scenes/old/PuzzleUITest.unity
-    guid: 1927711a89adc4824bf9aa3fa70baa2b
-  - enabled: 0
-    path: Assets/Scenes/old/PreAlphaFloorPlanTest.unity
-    guid: 190833d8239354f42acd781aea8e272a
+  - enabled: 1
+    path: Assets/Scenes/S1_Clinic.unity
+    guid: 01b48d4e7759fd76d8d9e776e72d806a
+  - enabled: 1
+    path: Assets/Scenes/S2_Office.unity
+    guid: a47214142ee763d408769e7b0b817a45
+  - enabled: 1
+    path: Assets/Scenes/S3_Lab.unity
+    guid: f912eb19dcdf4df4dadc6bfbdee1aecf
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
