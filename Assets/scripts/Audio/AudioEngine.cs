@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -35,13 +36,13 @@ public class AudioEngine : MonoBehaviour
         SfxVolume = ReadVolume("SfxVolume");
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
         if (mixer == null)
         {
             Debug.LogError("AudioEngine needs its audio mixer assigned.", this);
             enabled = false;
-            return;
+            yield break;
         }
 
         // Unity mixer parameters must be applied in Start or later.
@@ -49,6 +50,17 @@ public class AudioEngine : MonoBehaviour
         ApplyVolume("MasterVolume", MasterVolume);
         ApplyVolume("MusicVolume", MusicVolume);
         ApplyVolume("SfxVolume", SfxVolume);
+
+        // Feedback scripts create their AudioSources in Start.
+        yield return null;
+        foreach (AudioSource source in FindObjectsByType<AudioSource>(FindObjectsInactive.Include))
+        {
+            bool belongsToScene = source.gameObject.scene == gameObject.scene;
+            bool belongsToProgression = ProgressionState.Instance != null &&
+                source.gameObject == ProgressionState.Instance.gameObject;
+            if ((belongsToScene || belongsToProgression) && source.outputAudioMixerGroup == null)
+                source.outputAudioMixerGroup = effectsGroup;
+        }
     }
 
     public void SetMasterVolume(float volume)

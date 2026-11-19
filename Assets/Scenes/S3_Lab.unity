@@ -1188,6 +1188,90 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1001 &983126916
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 130645710193063266, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
+      propertyPath: player
+      value:
+      objectReference: {fileID: 1903446617}
+    - target: {fileID: 2950499118711411555, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
+      propertyPath: player
+      value:
+      objectReference: {fileID: 1903446617}
+    - target: {fileID: 4404778229258381050, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
+      propertyPath: player
+      value:
+      objectReference: {fileID: 1903446617}
+    - target: {fileID: 6327748753493761041, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value:
+      objectReference: {fileID: 136189029682521636, guid: 34bea51644b588d488a42ac7cbc567a7, type: 2}
+    - target: {fileID: 7056686328576368171, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056686328576368171, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056686328576368171, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056686328576368171, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056686328576368171, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056686328576368171, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056686328576368171, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056686328576368171, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056686328576368171, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056686328576368171, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420721215530200886, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
+      propertyPath: m_Name
+      value: GameplayAudio
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
+--- !u!114 &983126917 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9161414312816348107, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
+  m_PrefabInstance: {fileID: 983126916}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85495f9801234e49b6a391d515bfac2e, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::EvidenceLog
 --- !u!1001 &1180767408
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1763,7 +1847,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'w a s d = move | space = jump | ctrl / c = crouch | shift = sprint | e = interact | q = swap realm '
+  m_text: w a s d = move | space = jump | ctrl / c = crouch | shift = sprint | e = interact | q = swap realm | j = evidence log
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2523,6 +2607,7 @@ GameObject:
   - component: {fileID: 1853829417}
   - component: {fileID: 1853829416}
   - component: {fileID: 1853829415}
+  - component: {fileID: 1853829419}
   m_Layer: 6
   m_Name: Document
   m_TagString: Untagged
@@ -2637,6 +2722,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853829413}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1853829419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853829413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7fac1e19782c3c4293325160ff9b0a8, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::EvidenceInteraction
+  log: {fileID: 983126917}
+  entry: {fileID: 11400000, guid: c6c7363ac3a241378bf1b9355ad64296, type: 2}
 --- !u!1 &1854174279
 GameObject:
   m_ObjectHideFlags: 0
@@ -2782,6 +2881,10 @@ PrefabInstance:
       propertyPath: isPlayerFootsteps
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5476391515056543620, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value:
+      objectReference: {fileID: 136189029682521636, guid: 34bea51644b588d488a42ac7cbc567a7, type: 2}
     - target: {fileID: 1059205035229911061, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.7
@@ -2855,6 +2958,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
+--- !u!114 &1903446617 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3249285922639675987, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
+  m_PrefabInstance: {fileID: 1903446616}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614156799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e4ac756fe3e37132a5fdaac81cbc67e, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::movementController
 --- !u!1001 &2007122465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -234779,3 +234893,4 @@ SceneRoots:
   - {fileID: 1823433537}
   - {fileID: 1180767408}
   - {fileID: 1309101941}
+  - {fileID: 983126916}
