@@ -2985,10 +2985,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwitchTransitionFeedback
   duration: 1.1
-  screenWashOpacity: 0.35
+  screenWashOpacity: 1
   dreamTransitionSound: {fileID: 8300000, guid: 1ffbc51722833cc4db608a2f2d3d8e04, type: 3}
   realityTransitionSound: {fileID: 8300000, guid: a8154de25906ea34691186d37c3229e2, type: 3}
-  volume: 0.65
+  volume: 0.9
 --- !u!114 &308637636
 MonoBehaviour:
   m_ObjectHideFlags: 0

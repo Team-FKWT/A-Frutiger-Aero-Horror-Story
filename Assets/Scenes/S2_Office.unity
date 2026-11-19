@@ -2823,10 +2823,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwitchTransitionFeedback
   duration: 1.1
-  screenWashOpacity: 0.35
+  screenWashOpacity: 1
   dreamTransitionSound: {fileID: 8300000, guid: 1ffbc51722833cc4db608a2f2d3d8e04, type: 3}
   realityTransitionSound: {fileID: 8300000, guid: a8154de25906ea34691186d37c3229e2, type: 3}
-  volume: 0.65
+  volume: 0.903
 --- !u!1 &321541137
 GameObject:
   m_ObjectHideFlags: 0
@@ -9443,6 +9443,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8780214069676707010, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
+      propertyPath: audioClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8780214069676707010, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
+      propertyPath: 'audioClips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: ff173dfd8ae6a923e840170d02996ca4, type: 3}
     - target: {fileID: 1059205035229911061, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
