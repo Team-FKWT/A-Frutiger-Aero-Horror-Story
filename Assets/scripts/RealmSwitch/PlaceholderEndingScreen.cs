@@ -1,18 +1,23 @@
 using UnityEngine;
 
-/// TEMPORARY stand-in for the real ending screens (built by Xander Puchalski and
-/// Andrew How). When the ending starts, it pauses the game, frees the mouse, and
-/// shows the two choices. Picking one calls ProgressionState.ChooseEnding and
-/// shows that ending's text. Remove it once the real screens listen to the same events.
- 
+/// TEMPORARY stand-in for the real ending screens, laid out from Xander Puchalski's
+/// wireframe. When the ending starts, it pauses the game, frees the mouse, and
+/// shows the two choices: Escape and Comply. Picking one calls
+/// ProgressionState.ChooseEnding and shows that ending's text.
+/// The ending text is a stand-in until Andrew How and Lily Gomes write the final versions.
+/// Note: the text fields were renamed from exposeTheTruthText / remainIgnorantText so
+/// scenes pick up the new wording instead of keeping the old saved text.
+
 public class PlaceholderEndingScreen : MonoBehaviour
 {
     [TextArea(3, 6)]
-    [SerializeField] private string exposeTheTruthText =
-        "You upload the corporate evidence. The company's stock crashes, its experiments are revealed to the public, and you face the dystopian world outside.";
+    [SerializeField]
+    private string escapeText =
+        "You shut down the data center and walk out through the emergency exit with the evidence. You know the truth about Hypnosom now, and Müllerin knows you know.";
     [TextArea(3, 6)]
-    [SerializeField] private string remainIgnorantText =
-        "You keep quiet. They catch you snooping and pay you to stay silent... and later make sure you stay that way.";
+    [SerializeField]
+    private string complyText =
+        "You disable the exit lock and wait. They said you weren't in trouble. They just wanted to talk.";
 
     private enum Stage { Hidden, Choosing, Showing }
 
@@ -70,22 +75,21 @@ public class PlaceholderEndingScreen : MonoBehaviour
         float x = (Screen.width - w) / 2f;
         float y = Screen.height * 0.25f;
 
-        GUI.Label(new Rect(x, y - 50f, w, 30f), "PLACEHOLDER ENDING SCREEN", bodyStyle);
-
         if (stage == Stage.Choosing)
         {
             GUI.Label(new Rect(x, y, w, 50f), "What will you do?", titleStyle);
             float bw = (w - 20f) / 2f;
-            if (GUI.Button(new Rect(x, y + 90f, bw, 60f), "Expose the Truth", buttonStyle))
+            // EndingChoice keeps its original internal names; only the on-screen words changed.
+            if (GUI.Button(new Rect(x, y + 90f, bw, 60f), "Escape", buttonStyle))
                 state.ChooseEnding(EndingChoice.ExposeTheTruth);
-            if (GUI.Button(new Rect(x + bw + 20f, y + 90f, bw, 60f), "Remain Ignorant", buttonStyle))
+            if (GUI.Button(new Rect(x + bw + 20f, y + 90f, bw, 60f), "Comply", buttonStyle))
                 state.ChooseEnding(EndingChoice.RemainIgnorant);
         }
         else
         {
-            bool expose = chosen == EndingChoice.ExposeTheTruth;
-            GUI.Label(new Rect(x, y, w, 50f), expose ? "Expose the Truth" : "Remain Ignorant", titleStyle);
-            GUI.Label(new Rect(x, y + 70f, w, 160f), expose ? exposeTheTruthText : remainIgnorantText, bodyStyle);
+            bool escape = chosen == EndingChoice.ExposeTheTruth;
+            GUI.Label(new Rect(x, y, w, 50f), escape ? "Escape" : "Comply", titleStyle);
+            GUI.Label(new Rect(x, y + 70f, w, 160f), escape ? escapeText : complyText, bodyStyle);
             GUI.Label(new Rect(x, y + 240f, w, 30f), "THE END  (press M to return to the menu)", bodyStyle);
         }
     }

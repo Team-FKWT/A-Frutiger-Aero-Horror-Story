@@ -8,9 +8,11 @@ using UnityEngine.InputSystem;
 /// Development-only debug panel. Press the backquote key (`) to show or hide it.
 /// Shows the current realm, current segment, each puzzle's solved state, whether
 /// switching is allowed right now, the ending state, and the last few events.
-/// Press = to force the ending (skips all requirements, for testing only).
+/// Press = to force the ending (skips all requirements, for testing only). It only
+/// works in a scene that has an ending screen (S3); elsewhere it is ignored, so the
+/// ending can't be started with nothing to show it and then block the real ending.
 /// Removes itself in release builds. Put it on the GameManager next to ProgressionState.
- 
+
 public class RealmDebugOverlay : MonoBehaviour
 {
     [SerializeField] private bool startVisible = false;
@@ -75,8 +77,19 @@ public class RealmDebugOverlay : MonoBehaviour
 
         if (ForceEndingPressed() && !state.HasEndingStarted)
         {
-            Log("Ending forced (=, debug)");
-            state.StartEnding();
+            // Only force the ending where a screen exists to show it. Starting it
+            // anywhere else would mark the ending as started with nothing on screen,
+            // and the real ending in S3 would then be ignored for the rest of the run.
+            if (FindAnyObjectByType<PlaceholderEndingScreen>() == null)
+            {
+                Log("= ignored: no ending screen in this scene (S3 only)");
+                Debug.Log("[Ending] = ignored: no ending screen in this scene. Use it in S3.");
+            }
+            else
+            {
+                Log("Ending forced (=, debug)");
+                state.StartEnding();
+            }
         }
 
         // Scenes change, so look for switch points again once a second while open.
@@ -164,7 +177,7 @@ public class RealmDebugOverlay : MonoBehaviour
         text.AppendLine(reason == SwitchBlockReason.None
             ? "Can switch: <color=#7CFC9A>YES</color>"
             : $"Can switch: <color=#FF8A80>NO</color> ({reason})");
-        text.AppendLine($"Ending:    {endingStatus}   <color=#9AA4B2>= to force</color>");
+        text.AppendLine($"Ending:    {endingStatus}   <color=#9AA4B2>= to force (S3)</color>");
         text.AppendLine();
         text.AppendLine("<b>Puzzles</b>");
         if (puzzleIds.Count == 0) text.AppendLine("  <color=#9AA4B2>none found</color>");
