@@ -116,3 +116,4 @@ InitTestScene*.unity*
 # Local builds (Adam)
 /[Bb]uilds/
 /[Bb]uilds.zip
+Assets/Settings/UniversalRenderPipelineGlobalSettings.asset
