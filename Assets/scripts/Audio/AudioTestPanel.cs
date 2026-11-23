@@ -1,8 +1,7 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-// Only placed in AudioTestClinic. F8 switches between gameplay and audio controls.
+// F8 switches between gameplay and audio controls.
 public class AudioTestPanel : MonoBehaviour
 {
     [SerializeField] private AudioEngine engine;
@@ -10,6 +9,7 @@ public class AudioTestPanel : MonoBehaviour
     [SerializeField] private AudioCueEmitter spatialPreview;
     [SerializeField] private AudioCueEmitter interactionPreview;
     [SerializeField] private movementController player;
+    [SerializeField] private bool enableControls = true;
     private mouseController playerLook;
     private UniversalAudioTrigger footsteps;
     private bool editing;
@@ -29,23 +29,18 @@ public class AudioTestPanel : MonoBehaviour
         }
     }
 
-    private IEnumerator Start()
-    {
-        // Existing feedback scripts create their sources in Start. Route them locally
-        // so the test scene's master and SFX controls also cover existing effects.
-        yield return null;
-        foreach (AudioSource source in FindObjectsByType<AudioSource>(FindObjectsInactive.Include))
-        {
-            bool belongsToScene = source.gameObject.scene == gameObject.scene;
-            bool belongsToProgression = ProgressionState.Instance != null &&
-                source.gameObject == ProgressionState.Instance.gameObject;
-            if ((belongsToScene || belongsToProgression) && source.outputAudioMixerGroup == null)
-                source.outputAudioMixerGroup = engine.EffectsGroup;
-        }
-    }
-
     private void Update()
     {
+        if (!enableControls)
+        {
+            SetEditing(false);
+            if (overrideDetection)
+            {
+                overrideDetection = false;
+                if (music != null) music.DetectionOverride = null;
+            }
+            return;
+        }
         if (Keyboard.current == null || !Keyboard.current.f8Key.wasPressedThisFrame ||
             TextInputGuard.IsTyping)
             return;
@@ -89,7 +84,7 @@ public class AudioTestPanel : MonoBehaviour
 
     private void OnGUI()
     {
-        if (engine == null || music == null) return;
+        if (!enableControls || engine == null || music == null) return;
         Matrix4x4 previousMatrix = GUI.matrix;
         float uiScale = Mathf.Max(1f, Screen.height / 720f);
         GUI.matrix = Matrix4x4.Scale(new Vector3(uiScale, uiScale, 1f));
@@ -101,7 +96,7 @@ public class AudioTestPanel : MonoBehaviour
         }
 
         GUILayout.BeginArea(new Rect(16f, 16f, 330f, 390f), GUI.skin.box);
-        GUILayout.Label("AUDIO TEST CLINIC");
+        GUILayout.Label("AUDIO CONTROLS");
         GUILayout.Label("F8 returns to gameplay.");
         Realm realm = ProgressionState.Instance != null ? ProgressionState.Instance.CurrentRealm : Realm.Reality;
         GUILayout.Label($"Realm: {realm}   Detection: {music.Detection:F0}%   Speed: {music.PlaybackSpeed:F2}x");
@@ -119,7 +114,7 @@ public class AudioTestPanel : MonoBehaviour
             testDetection = Slider("Detection", testDetection / 100f) * 100f;
         music.DetectionOverride = overrideDetection ? testDetection : (float?)null;
 
-        if (GUILayout.Button("Preview positional door sound")) spatialPreview.Play();
+        if (GUILayout.Button("Preview positional sound")) spatialPreview.Play();
         if (GUILayout.Button("Preview puzzle confirmation")) interactionPreview.Play();
         GUILayout.Label("Return to gameplay to move or switch realms.");
         if (GUILayout.Button("Return to gameplay")) SetEditing(false);
