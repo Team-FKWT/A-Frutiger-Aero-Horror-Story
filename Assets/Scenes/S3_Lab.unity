@@ -1198,19 +1198,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 130645710193063266, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
       propertyPath: player
-      value:
+      value: 
       objectReference: {fileID: 1903446617}
     - target: {fileID: 2950499118711411555, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
       propertyPath: player
-      value:
+      value: 
       objectReference: {fileID: 1903446617}
     - target: {fileID: 4404778229258381050, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
       propertyPath: player
-      value:
+      value: 
       objectReference: {fileID: 1903446617}
     - target: {fileID: 6327748753493761041, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
       propertyPath: OutputAudioMixerGroup
-      value:
+      value: 
       objectReference: {fileID: 136189029682521636, guid: 34bea51644b588d488a42ac7cbc567a7, type: 2}
     - target: {fileID: 7056686328576368171, guid: 3841e06410581b44b86f9e4e5bb70925, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1270,7 +1270,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85495f9801234e49b6a391d515bfac2e, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EvidenceLog
 --- !u!1001 &1180767408
 PrefabInstance:
@@ -2031,7 +2031,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7791486788655378091, guid: a86ecd511b7e1614b9a6cbd8466f4c5d, type: 3}
+  - {fileID: 2100000, guid: 66b0622584a8088499d827f7dadd27a8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2732,7 +2732,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7fac1e19782c3c4293325160ff9b0a8, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EvidenceInteraction
   log: {fileID: 983126917}
   entry: {fileID: 11400000, guid: c6c7363ac3a241378bf1b9355ad64296, type: 2}
@@ -2850,8 +2850,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14a1e29934827f84697476d03e45f51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlaceholderEndingScreen
-  exposeTheTruthText: You upload the corporate evidence. The company's stock crashes, its experiments are revealed to the public, and you face the dystopian world outside.
-  remainIgnorantText: You keep quiet. They catch you snooping and pay you to stay silent... and later make sure you stay that way.
+  escapeText: "You shut down the data center and walk out through the emergency exit with the evidence. You know the truth about Hypnosom now, and M\uFFFDllerin knows you know."
+  complyText: You disable the exit lock and wait. They said you weren't in trouble. They just wanted to talk.
 --- !u!114 &1854174286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2883,7 +2883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5476391515056543620, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
       propertyPath: OutputAudioMixerGroup
-      value:
+      value: 
       objectReference: {fileID: 136189029682521636, guid: 34bea51644b588d488a42ac7cbc567a7, type: 2}
     - target: {fileID: 1059205035229911061, guid: 2befd1539f9e7478f8e11ac5afa6a9ae, type: 3}
       propertyPath: m_LocalScale.x
@@ -2967,7 +2967,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e4ac756fe3e37132a5fdaac81cbc67e, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::movementController
 --- !u!1001 &2007122465
 PrefabInstance:
@@ -70226,7 +70226,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7791486788655378091, guid: 32f7a918ce8bb7d4d946232a4ef1868c, type: 3}
+  - {fileID: 2100000, guid: 6c4e003011d40294a9750f0cee83d479, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82941,7 +82941,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c1d5eb6d64e0ab04b9b29122529d8e6a, type: 2}
+  - {fileID: 2100000, guid: 0df9d13aa4870344fa4061a3c707e809, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94011,7 +94011,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7791486788655378091, guid: 32f7a918ce8bb7d4d946232a4ef1868c, type: 3}
+  - {fileID: 2100000, guid: 48174119d0687da48b16f74ac6dfbd71, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94386,7 +94386,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7791486788655378091, guid: 32f7a918ce8bb7d4d946232a4ef1868c, type: 3}
+  - {fileID: 2100000, guid: 48174119d0687da48b16f74ac6dfbd71, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -114079,7 +114079,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7791486788655378091, guid: 32f7a918ce8bb7d4d946232a4ef1868c, type: 3}
+  - {fileID: 2100000, guid: 48174119d0687da48b16f74ac6dfbd71, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -208494,7 +208494,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7791486788655378091, guid: 32f7a918ce8bb7d4d946232a4ef1868c, type: 3}
+  - {fileID: 2100000, guid: 48174119d0687da48b16f74ac6dfbd71, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
